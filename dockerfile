@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
 RUN npx playwright install-deps chromium
 
 # Install ONLY Chromium browser for Playwright
-RUN npx playwright install chromium
+RUN npx playwright install
 COPY app/ .
 
 # Expose the port the app will run on
