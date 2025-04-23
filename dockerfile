@@ -5,7 +5,7 @@ FROM node:18
 WORKDIR /app
 
 # Install Playwright dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
   libgbm-dev \
   libnss3 \
   libatk-bridge2.0-0 \
