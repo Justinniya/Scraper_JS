@@ -1,0 +1,12 @@
+version: '3'
+services:
+  scraper-api:
+    build:
+      context: .  # The root directory (your-project-directory)
+      dockerfile: Dockerfile  # Dockerfile is outside the 'app' directory
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app  # Mount the app directory to the container
+    environment:
+      - NODE_ENV=production
