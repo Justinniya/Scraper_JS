@@ -1004,7 +1004,7 @@ async function scraper_main(functionName, url) {
         let result = await main(fn, url);  // Runs one function at a time
         result_final = { ...result_final, ...result };
     }
-
+    console.log(result_final);
     fs.writeFileSync('airbnb_output.json', JSON.stringify(result_final, null, 2));
     return { "Result": result_final };
 }
