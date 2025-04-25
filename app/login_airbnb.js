@@ -9,6 +9,7 @@ async function loginToAirbnb(email, password) {
         await page.goto('https://www.airbnb.com/login');
         await page.waitForTimeout(5000);
     // loginToAirbnb("justindelavega00@gmail.com", "Emjaycee83849724")
+    await page.screenshot({ path : 'f1.png', fullPage: true });
         console.log(email,password);
         try{
             const accept_cookies = await page.locator('xpath=//*[@id="react-application"]/div/div/div[1]/div/div[3]/section/div/div[2]/div[1]/button').isVisible();
@@ -22,18 +23,29 @@ async function loginToAirbnb(email, password) {
         let email_button = await page.locator("xpath=//*[@id='FMP-target']/div/div/div/div[3]/div/div[3]/button");
         await email_button.click();
         await page.waitForTimeout(2000);
+        
         // let email_input = await page.locator("xpath=user[email]");
-        await page.keyboard.insertText(email);
+        for(const typing of email){
+            await page.keyboard.press(typing);
+            await page.waitForTimeout(1000);
+        }
+        await page.screenshot({ path : 'f2.png', fullPage: true });
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(15000);
+        await page.screenshot({ path : 'f3.png', fullPage: true });
         await page.waitForTimeout(2000);
-
-        // let password_input = await page.locator("xpath=user[password]");
-        await page.keyboard.insertText(password);
+        for(const typing of password){
+            await page.keyboard.press(typing);
+            await page.waitForTimeout(1000);
+        }
+        await page.screenshot({ path : 'f4.png', fullPage: true });
+        await page.waitForTimeout(2000);
         await page.keyboard.press('Enter');
+        await page.screenshot({ path : 'screenshot.png', fullPage: true });
         await page.waitForTimeout(5000);
         console.log(await page.url());
-        await page.waitForTimeout(2000);
-
+        await page.waitForTimeout(10000);
+        await page.screenshot({ path : 'result.png', fullPage: true });
         if (await page.url() === 'https://www.airbnb.com/') {
             const cookies = await context.cookies();
             fs.writeFileSync('airbnb.json', JSON.stringify(cookies, null, 2));

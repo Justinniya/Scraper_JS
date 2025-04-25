@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/airbnb/login',async (req, res) => {
+app.post('/scraping/airbnb/login',async (req, res) => {
     let { email, password } = req.body;
 
     if (!email || !password) {
@@ -37,7 +37,15 @@ app.post('/airbnb/login',async (req, res) => {
 });
 // loginToAirbnb("justindelavega00@gmail.com", "Emjaycee83849724")
 
-app.post('/airbnb/scraper', async (req, res) => {
+// curl -X POST http://localhost:3000/scraping/airbnb/login \
+//   -H "Content-Type: application/json" \
+//   -d '{
+//     "email": "justindelavega00@gmail.com",
+//     "password": "Emjaycee83849724"
+//   }'
+
+
+app.post('/scraping/airbnb/scraper', async (req, res) => {
     const { functionNames, url } = req.body;
     console.log(functionNames,url);
     if (!Array.isArray(functionNames)) {
@@ -58,7 +66,7 @@ app.post('/airbnb/scraper', async (req, res) => {
 });
 
 
-app.post('/airbnb/postToFacebook', async (req, res) => {
+app.post('/scraping/airbnb/postToFacebook', async (req, res) => {
     const { url, feelingEmoji, textPost, file } = req.body;
 
     if (!url || !feelingEmoji || !textPost || !file) {
@@ -73,6 +81,11 @@ app.post('/airbnb/postToFacebook', async (req, res) => {
         res.status(500).json({ error: 'Error during posting to Facebook' });
     }
 });
+
+app.get('/scraping/airbnb/home', async () => {
+    return ({ message: 'Welcome to the Airbnb Scraper API!' });
+});
+
 
 
 
