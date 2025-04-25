@@ -1,7 +1,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
-const { scraper_main } = require('./airbnb_property.js');
+// const { scraper_main } = require('./airbnb_property.js');
 const { scraper_main } = require('./non_multi.js');
 const { loginToAirbnb } = require('./login_airbnb.js');
 const { main } = require('./facebook_post.js');
