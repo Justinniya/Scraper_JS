@@ -55,7 +55,8 @@ async function listing_main() {
     await page.close();
     
 
-await response(sets);
+  await response(sets);
+  return sets;
     
 };
 
