@@ -12,6 +12,7 @@ const cors = require('cors');
 const {listing_main} = require('./listing_airbnb.js')
 const { url } = require('inspector');
 const app = express();
+const fetch = require('node-fetch');
 
 app.use(cors());
 app.use(express.json());
