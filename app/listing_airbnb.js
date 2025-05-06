@@ -46,7 +46,7 @@ async function listing_main() {
             'check_out': convertDateToDigits(check_out),
             'currency': result.symbol,
             'price':result.amount,
-            'uuid': uid
+            'airbnb_uid': uid
         });
         
     
@@ -74,7 +74,7 @@ async function response(sets)
           "b81ba55cf3a383979acaea298c2da9a7659bf243",
           "managebnb.property",
           "collect_scrape_airbnb_bookings",
-          [[{"reservation_code":"viurwnldmew","guest_name":"Ella Ellmaurer","check_in":"2025-04-24","check_out":"2025-05-01","currency":"THB","price":8793.79,"airbnb_uid":"1236555571957374980"}]]
+          sets
         ]
       }
     }, {
