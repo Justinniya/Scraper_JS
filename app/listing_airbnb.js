@@ -70,7 +70,7 @@ async function response(sets)
         args: [
           'odoo_botification_dryrun',              // database name
           2,                                       // user ID
-          'b81ba55cf3a383979acaea298c2da9a7659bf243', // access token or password
+          'ef9b3ff8cf437acfc67a832497aece3e727b0bc4', // access token or password
           'managebnb.property',                    // model
           'collect_scrape_airbnb_bookings',        // method
           sets                                     // method arguments
