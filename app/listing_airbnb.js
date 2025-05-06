@@ -3,9 +3,10 @@ const fs = require('fs');
 const { set } = require('date-fns/set');
 const axios = require('axios');
 
-async function listing_main() {
-    const browser = await chromium.launch({ headless: true  ,args: ['--start-maximized'] });
-    const context = await browser.newContext({userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'});
+async function listing_main(data) {
+  console.log(data);
+    const browser = await chromium.launch({ headless: true ,args: ['--window-size=1920,1080'] });
+    const context = await browser.newContext({userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',viewport: { width: 1920, height: 1080 }});
     const page = await context.newPage();
     await page.waitForTimeout(5000);
     try{
@@ -22,14 +23,22 @@ async function listing_main() {
     await page.locator('xpath=//*[@id="site-content"]/div[1]/section/div[2]/div[1]/div/div/div[1]/div/button').click();
     await page.waitForTimeout(2000);
     await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[1]/div[1]/label/div[2]').click();
-    await selectDateFromCalendar(page, 1, 5, 2025, true);  
+    const StartDate = data['filter_start_date'];
+    const [start_year,start_month, start_day] = StartDate.split('-').map(Number);
+    await selectDateFromCalendar(page, start_day, start_month, start_year, true);  
 
     await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[2]/div[1]/label/div[2]').click();
-    await selectDateFromCalendar(page, 10, 5, 2025, false); 
+    const EndDate = data['filter_end_date'];
+    const [end_year,end_month, end_day] = EndDate.split('-').map(Number);
+    await selectDateFromCalendar(page, end_day, end_month, end_year, false); 
     await page.waitForTimeout(2000);
-    await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/footer/button').nth(1).click();
+    
+    // await footer.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+    await page.waitForTimeout(500);
+    let apply = await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/footer/button').nth(1);
+    await apply.click({ force: true});
+    
     await page.waitForTimeout(20000);
-
     let number_of_lines = await page.locator('[data-testid="host-reservations-table-row"]').count();
     let final_listing;
     let sets = [];
@@ -48,7 +57,7 @@ async function listing_main() {
         final_listing = await page1.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div/div/div/div[2]/div/div[1]/div[1]/div[2]').textContent();
         await page1.close();
         await page.bringToFront();
-        const uid = findUID(final_listing);
+        const uid = findUID(final_listing,data);
         const result = separateCurrencySymbol(price);
         sets.push({
             'reservation_code': code,
@@ -67,7 +76,8 @@ async function listing_main() {
     
     await page.close();
     await response(sets);
-    return  sets;
+    // console.log(sets);
+    return sets;
 };
 
 async function selectDateFromCalendar(page, day, month, year, isStartDate = true) {
@@ -146,32 +156,34 @@ function separateCurrencySymbol(amount) {
     return null;
   }
 
-function findUID(entry) {
-    const data = {
-        names: [
-          "A1 Chaweng Mountain View, 1th floor", "A2 Chaweng Mountain View, 1th floor",
-          "A3 Chaweng Lake View, 2nd floor",     "A4 Chaweng Lake View, 2nd floor",
-          "A5 Chaweng Panorama View, 3rd floor", "A6 Chaweng Panorama View, 3rd floor",
-          "B1 Chaweng Mountain View, 1th floor", "B2 Chaweng Mountain View, 1th floor",
-          "B3 Chaweng Lake View, 2nd floor",     "B4 Chaweng Lake View, 2nd floor",
-          "B5 Chaweng Panorama View, 3rd floor", "B6 Chaweng Panorama View, 3rd floor",
-          "C1 Chaweng Mountain View, 1th floor", "C2 Chaweng Mountain View, 1th floor",
-          "C3 Chaweng Lake View, 2nd floor",     "C4 Chaweng Lake View, 2nd floor",
-          "C5 Chaweng Panorama View, 3rd floor", "C6 Chaweng Panorama View, 3rd floor",
-          "D1 Chaweng Mountain View, 1th floor", "D2 Chaweng Mountain View, 1th floor",
-          "D3 Chaweng Lake View, 2nd floor",     "D4 Chaweng Lake View, 2nd floor"
-        ],
-        airbnb_uids: [
-          "1214205284926186484", "1326436699315156206", "1217189681070539446",
-          "1326425673876377173", "1217258250370046916", "1285062459552924609",
-          "1217089201544101425", "1326439048034779048", "1283052734931254218",
-          "1326427239457519760", "1236555571957374980", "1284522361461507064",
-          "1326432967356919229", "1217089201544101425", "1326420020033729942",
-          "1326429385889305030", "1284492686085392718", "1285074523204401588",
-          "1326435610236794917", "753379668429308358", "1326423041028890706",
-          "1326430672093829098"
-        ]
-      };
+function findUID(entry,dataParam) {
+    const data = dataParam['for_catching_airbnb_uid'];
+    // {
+        // names: [
+        //   "A1 Chaweng Mountain View, 1th floor", "A2 Chaweng Mountain View, 1th floor",
+        //   "A3 Chaweng Lake View, 2nd floor",     "A4 Chaweng Lake View, 2nd floor",
+        //   "A5 Chaweng Panorama View, 3rd floor", "A6 Chaweng Panorama View, 3rd floor",
+        //   "B1 Chaweng Mountain View, 1th floor", "B2 Chaweng Mountain View, 1th floor",
+        //   "B3 Chaweng Lake View, 2nd floor",     "B4 Chaweng Lake View, 2nd floor",
+        //   "B5 Chaweng Panorama View, 3rd floor", "B6 Chaweng Panorama View, 3rd floor",
+        //   "C1 Chaweng Mountain View, 1th floor", "C2 Chaweng Mountain View, 1th floor",
+        //   "C3 Chaweng Lake View, 2nd floor",     "C4 Chaweng Lake View, 2nd floor",
+        //   "C5 Chaweng Panorama View, 3rd floor", "C6 Chaweng Panorama View, 3rd floor",
+        //   "D1 Chaweng Mountain View, 1th floor", "D2 Chaweng Mountain View, 1th floor",
+        //   "D3 Chaweng Lake View, 2nd floor",     "D4 Chaweng Lake View, 2nd floor"
+        // ],
+        // airbnb_uids: [
+        //   "1214205284926186484", "1326436699315156206", "1217189681070539446",
+        //   "1326425673876377173", "1217258250370046916", "1285062459552924609",
+        //   "1217089201544101425", "1326439048034779048", "1283052734931254218",
+        //   "1326427239457519760", "1236555571957374980", "1284522361461507064",
+        //   "1326432967356919229", "1217089201544101425", "1326420020033729942",
+        //   "1326429385889305030", "1284492686085392718", "1285074523204401588",
+        //   "1326435610236794917", "753379668429308358", "1326423041028890706",
+        //   "1326430672093829098"
+        // ]
+        
+      // };
     const codeMatch = entry.match(/\b[A-Z]\d\b/); // Find room code like A4, B5
     const floorMatch = entry.match(/(Chaweng .*?floor)/); // Extract floor description
   
@@ -226,6 +238,7 @@ function sign(symbol){
       };
       return currencyMap[symbol];
 }
+
 
 
 module.exports = { listing_main }
