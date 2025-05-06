@@ -120,8 +120,9 @@ app.get('/scraping/airbnb/completed_listing', async (req, res) => {
     // }
 
     try {
-        let result = await listing_main();
-        res.status(200).json(result);
+        res.sendStatus(200);
+        await listing_main();
+        
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Error during posting to Facebook' });

@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const { set } = require('date-fns/set');
+const fetch = require('node-fetch');
 
 async function listing_main() {
     const browser = await chromium.launch({ headless: true  ,args: ['--start-maximized'] });
@@ -53,7 +54,32 @@ async function listing_main() {
     // await page.waitForTimeout(50000);
     
     await page.close();
-    return {'result': sets}
+    const response = await fetch('http://ds2.d3.net:8069/jsonrpc', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "jsonrpc": "2.0",
+        "method": "call",
+        "params": {
+          "service": "object",
+          "method": "execute_kw",
+          "args": [
+            "odoo_botification_dryrun",
+            2,
+            "b81ba55cf3a383979acaea298c2da9a7659bf243",
+            "managebnb.property",
+            "collect_scrape_airbnb_bookings",
+            sets
+          ]
+        }
+      }
+      )
+    });
+
+await response();
+    
 };
 
 function convertDateToDigits(dateStr) {
