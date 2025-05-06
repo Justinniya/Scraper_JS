@@ -62,7 +62,7 @@ async function listing_main() {
 async function response(sets)
 {
   try {
-    const response = await axios.post('http://ds2.d3.net:8069/jsonrpc', {{
+    const response = await axios.post('http://ds2.d3.net:8069/jsonrpc', {
       "jsonrpc": "2.0",
       "method": "call",
       "params": {
