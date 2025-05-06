@@ -2,11 +2,14 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const { scraper_main } = require('./airbnb_property.js');
+const { house_listing } = require('./house_listing.js');
+const { hotel_listing } = require('./hotel_listing.js');
 // const { scraper_main } = require('./non_multi.js');
 const { loginToAirbnb } = require('./login_airbnb.js');
 const { main } = require('./facebook_post.js');
 const express = require('express');
 const cors = require('cors');
+const {listing_main} = require('./listing_airbnb.js')
 const { url } = require('inspector');
 const app = express();
 
@@ -86,6 +89,49 @@ app.post('/scraping/airbnb/postToFacebook', async (req, res) => {
 app.get('/scraping/airbnb/home', async () => {
     return ({ message: 'Welcome to the Airbnb Scraper API!' });
 });
+
+
+app.post('/scraping/airbnb/create_listing', async (req, res) => {
+    const { data } = req.body;
+    console.log(data);
+    if (!url || !data ) {
+        return res.status(400).json({ error: 'URL, feelingEmoji, textPost and file are required' });
+    }
+
+    try {
+        if(data['choose_place'] == 'House'){
+            await house_listing(data);
+        }
+        else{
+            await hotel_listing(data);
+        }
+        res.status(200).json({ message: 'Post to Facebook successful!' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error during posting to Facebook' });
+    }
+});
+
+app.get('/scraping/airbnb/completed_listing', async (req, res) => {
+    // const { data } = req.body;
+    // console.log(data);
+    // if (!url || !data ) {
+    //     return res.status(400).json({ error: 'URL, feelingEmoji, textPost and file are required' });
+    // }
+
+    try {
+        let result = await listing_main();
+        res.status(200).json({ message: result });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error during posting to Facebook' });
+    }
+});
+
+app.get('/scraping/airbnb/home', async () => {
+    return ({ message: 'Welcome to the Airbnb Scraper API!' });
+});
+
 
 
 

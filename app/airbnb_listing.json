@@ -1,0 +1,862 @@
+[
+  {
+    "name": "bev",
+    "value": "1746162113_EAYjVlMjJkZGM4OG",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722140.136205,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "everest_cookie",
+    "value": "1746162113.EAYjk1M2RkZTNjYWZmYT.Yhqx43W5dArGgDFiI9U_J0PWGdH1Ur541a8C1l5MjZw",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722114.2272,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "country",
+    "value": "PH",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cdn_exp_5d4847f3128303184",
+    "value": "treatment",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1751346114.227261,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ak_bmsc",
+    "value": "8C3314467B2E46BCAE6CAC8701E4200F~000000000000000000000000000000~YAAQZColAbPuG4aWAQAA+l1fjxuSi6gzbpYK0tNJtCL3ao4cnzMTWpTaMP3TUx9pi3NAB/72D8KOnUmCAK9Rzc2WFjf982twGV/R/clJmzTV83h+nNvfqZ1+0lFih4pPKptLnoSJMrMT4iemtxQ7h5HhLt4zbdcVhMd3DpeBz+DVO2rx4WdH1sbUBV+jTW/k9ARtQu7T0YhU4t7p9zXW6lPWEBeMaHszNCg3KXprmq5FptzpkGepfjPsQE4mwJJpSATxknV4ZfZF0Fuw0Hh4c/pV6Xf7Ll+41WkbwLYDFF6Hz2eV8sf3DXncwGpFOVNRD0AqNMY6eY3ap/BNuo4u456mfb+9MAjnHupK0CtIxORPJ8jBdWFxHutAvilSY2Df",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1746169313.227277,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "previousTab",
+    "value": "%7B%22id%22%3A%22b39fdbd9-5fa7-452b-925c-4613c94b8aae%22%7D",
+    "domain": ".www.airbnb.com",
+    "path": "/",
+    "expires": 1762059714,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "jitney_client_session_id",
+    "value": "81f509c8-42fa-4e41-82ad-4bb2509c5c00",
+    "domain": ".www.airbnb.com",
+    "path": "/",
+    "expires": 1762059714,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "jitney_client_session_created_at",
+    "value": "1746162114.843",
+    "domain": ".www.airbnb.com",
+    "path": "/",
+    "expires": 1762059714,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "cfrmfctr",
+    "value": "DESKTOP",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1762059717,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_cci",
+    "value": "cban%3Aac-66e9fa0d-2adb-4cd7-a26a-2fc0e3582761",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1762059718,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ccv",
+    "value": "cban%3A0_183215%3D1%2C0_200000%3D1%2C0_183345%3D1%2C0_183243%3D1%2C0_183216%3D1%2C0_179751%3D1%2C0_200003%3D1%2C0_200005%3D1%2C0_179754%3D1%2C0_179750%3D1%2C0_179737%3D1%2C0_179744%3D1%2C0_179739%3D1%2C0_179743%3D1%2C0_179749%3D1%2C0_200012%3D1%2C0_200011%3D1%2C0_183217%3D1%2C0_183219%3D1%2C0_183096%3D1%2C0_179747%3D1%2C0_179740%3D1%2C0_179752%3D1%2C0_183241%3D1%2C0_200007%3D1%2C0_183346%3D1%2C0_183095%3D1%2C0_210000%3D1%2C0_210001%3D1%2C0_210002%3D1%2C0_210003%3D1%2C0_210004%3D1%2C0_210010%3D1%2C0_210012%3D1%2C0_210008%3D1%2C0_210016%3D1%2C0_210017%3D1",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1762059718,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "FPID",
+    "value": "FPID2.2.AIT4c8P5UNwEFQ1UKh7mJhVnFX31H9w7ZWBglCEJWSM%3D.1746162117",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722123.402033,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "FPAU",
+    "value": "1.1.638673052.1746162118",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1753938118.369729,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "FPLC",
+    "value": "%2FEEP95D6Ywc9T6OkAB%2FpAN6iUyT8ok94i69%2B3PBJkasmt09NGSK5idFW9E4dyXcAUQidcVOZG1yUZ07SFVWFjPb3wH1QDNPadd%2BqSYhEOuzODnCrJzhn2jLLcmkjqg%3D%3D",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1746234118.40086,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ar_debug",
+    "value": "1",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": 1748754118.555281,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "receive-cookie-deprecation",
+    "value": "1",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": 1761714118.566919,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "IDE",
+    "value": "AHWqTUkb8GE4m0c7bn6Scf1QEdgiu4X7pX1C_TBCAfLptGTOVhWHtPEX7U9Yt2u3",
+    "domain": ".doubleclick.net",
+    "path": "/",
+    "expires": 1780722118.73641,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "auth_jitney_session_id",
+    "value": "a0abeb61-e8fb-4332-9a3f-8f1323b08463",
+    "domain": ".www.airbnb.com",
+    "path": "/",
+    "expires": 1762059723,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ga",
+    "value": "GA1.1.508338015.1746162118",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722123.023663,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_ga_2P6Q8PGG16",
+    "value": "GS1.1.1746162118.1.0.1746162123.0.0.1610006711",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722123.030517,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "frmfctr",
+    "value": "wide",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1762059723,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_airbed_session_id",
+    "value": "90d26eabde7af7124fac8f6817001d26",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722138.494446,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_csrf_token",
+    "value": "V4%24.airbnb.com%24YoQaXrnPiEA%24rwyLE7zA78dM5SLnYTjxL-IfGHChsOpBwzBaVSiGTto%3D",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "flags",
+    "value": "0",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "OTZ",
+    "value": "8064302_24_24__24_",
+    "domain": "accounts.google.com",
+    "path": "/",
+    "expires": 1748754127,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "NID",
+    "value": "523=d3QPRfytCEPZIid5rG_MslmDfQPOi6jrz8A_k8T0meskKM5SSiwh69-snBiXI-wazZwKOA6zeInY3QSWISwUrSecEnwCx5sSMfkQfgJuk1iN_8CpxHQQX1g_-kCUJDCFkX2xv4izAvTO7f9o6ZwwrSUgvcvSVmYz0FX1YYgAOY39gpehjYPqB-sYR7hLOdMmkI76QfvQe0N21tf-AcEG-LhV2Jxnep5R41Iilhs_ce4nphzLTPgI6TY3ZPAbKsIU9gwsgljvdRYzstFUdyzd0EGdU_s3QMIvTFb4zqBd9bS82EV8M_QKu6CEzWnoR0Hq8vD6PmJ90xXvArCRknEg1nLfwBMgTT2M7fQ2YVpo8RSXgF4S79Eu-s7DepqMIjI_nn8KrH4tbtZJkqNAuCnrnMlf3Do_UJPCzquLtMz1q4Q1-M-ytRfWAbYYB5EjUURPUz_-gYw4ElZGFVorPVICSM2XZ_DxTXQAAwPJhi5oGNQAWXTcXkOliP_sCyFQEEBZTra1UPGrH904X3kMemZ9FwSUi5SO3zvEB0qvMoI9lS7fX7yi6NRx6RYQBujCd58x1XK2DlPty-k1ws0S_O7pL8DA-N-cgiutxxqhxWKEVZCPFnqoE6ITBXg0esetmIE7682v_uM7IBReXuAtWA",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1761973327.83709,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBYgBQ5lqdPKLZEeXkh4SyRgACgYKAbcSARYSFQHGX2MipMrdfWEua4agfD8-j0y1JBoVAUF8yKpjvOQGH09iPaQOGtEucce20076",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.83722,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PSID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBvO87fkPMcOmIkRXBd9IkBQACgYKAboSARYSFQHGX2MiIAYGsD3M1z8dN7Q12crJ0RoVAUF8yKp-rZqVH-KLVrIzC3hO5vTh0076",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.837263,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PSID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBAoV1bN05Lkp9gJLFPSh7OgACgYKARISARYSFQHGX2Mi7JLOIgdVKRuDBTvltoNXexoVAUF8yKocfckah280TDKeGJ-mFLu90076",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.837302,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "HSID",
+    "value": "Ab_EgVvyGiBANBdEI",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.837425,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SSID",
+    "value": "AbOuCfvGBLMoZvrJu",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.83746,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "APISID",
+    "value": "tUeCAjKMqxY2-sNv/AJoAzAq85TV_hTICV",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.837492,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.837528,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.837571,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1780722135.837595,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "__Host-GAPS",
+    "value": "1:T-Ct5wTA85wJZ2iZcI6xLhlCaKEJlTP_fl59twhmvlJ_eOElQgWaLtu-PkzM9qPJ5i0QzC7rHkSAv554eLygcNP_jvT6OA:-Adj2EYPn2FkqqF8",
+    "domain": "accounts.google.com",
+    "path": "/",
+    "expires": 1780722135.837641,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "LSID",
+    "value": "s.PH|s.TH|s.youtube:g.a000wgjYIjNgTbACpFfdp8bXBbgk_9CR_ivftrgL1JHrbUFXHcVi61JcXs1c9tDYRHsDBxjsRAACgYKAdoSARYSFQHGX2MiF-aisgfOJplbe7-Dp3CRmxoVAUF8yKr4W1N84q4IxzqRH7_Zo7dH0076",
+    "domain": "accounts.google.com",
+    "path": "/",
+    "expires": 1780722135.954842,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Host-1PLSID",
+    "value": "s.PH|s.TH|s.youtube:g.a000wgjYIjNgTbACpFfdp8bXBbgk_9CR_ivftrgL1JHrbUFXHcVixFubBO9LlLSCXykpNwvh8QACgYKAZgSARYSFQHGX2MikSkfRuW1IwSZdEBb2vBW4BoVAUF8yKqmGg5HKWQ9m6Hrsg3koWhA0076",
+    "domain": "accounts.google.com",
+    "path": "/",
+    "expires": 1780722135.954952,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Host-3PLSID",
+    "value": "s.PH|s.TH|s.youtube:g.a000wgjYIjNgTbACpFfdp8bXBbgk_9CR_ivftrgL1JHrbUFXHcVicTRDCnJUOuh30D4HYDNWJwACgYKAYASARYSFQHGX2Mip2Dtmoaz8-dLKbht7o2N1RoVAUF8yKpGZCmvx0AOcOmxaZupuYEl0076",
+    "domain": "accounts.google.com",
+    "path": "/",
+    "expires": 1780722135.955,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "ACCOUNT_CHOOSER",
+    "value": "AFx_qI7EkYSXF7jz9bjLSjamudIvQ6RYeLA6kzrd9rKNqZawlQWQr-sClh8rhtK31r7uyhJ80Nhw2w79VqLTvuHewNJCLO3E6rcz2fzuXMAyIuimRqqx4EDXibQZEpVF53mjUDeSW9qM",
+    "domain": "accounts.google.com",
+    "path": "/",
+    "expires": 1780722135.955038,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PSIDTS",
+    "value": "sidts-CjEBjplskJ0kA7M220O0OVZ9o6bC-5SYegjyG048w16cUIg603-Df_j4YbD1MNtVfZyHEAA",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1777698136.109375,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PSIDTS",
+    "value": "sidts-CjEBjplskJ0kA7M220O0OVZ9o6bC-5SYegjyG048w16cUIg603-Df_j4YbD1MNtVfZyHEAA",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1777698136.109455,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "HSID",
+    "value": "ACw_BkyASlSgkmJ4j",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.109489,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SSID",
+    "value": "ATQOFBL42ZvQCNExx",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.10951,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "APISID",
+    "value": "tUeCAjKMqxY2-sNv/AJoAzAq85TV_hTICV",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.109549,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.109588,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.109615,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.109644,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBYgBQ5lqdPKLZEeXkh4SyRgACgYKAbcSARYSFQHGX2MipMrdfWEua4agfD8-j0y1JBoVAUF8yKpjvOQGH09iPaQOGtEucce20076",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.109674,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PSID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBvO87fkPMcOmIkRXBd9IkBQACgYKAboSARYSFQHGX2MiIAYGsD3M1z8dN7Q12crJ0RoVAUF8yKp-rZqVH-KLVrIzC3hO5vTh0076",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.109706,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PSID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBAoV1bN05Lkp9gJLFPSh7OgACgYKARISARYSFQHGX2Mi7JLOIgdVKRuDBTvltoNXexoVAUF8yKocfckah280TDKeGJ-mFLu90076",
+    "domain": ".youtube.com",
+    "path": "/",
+    "expires": 1780722136.109753,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "HSID",
+    "value": "ACw_BkyASlSgkmJ4j",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.452323,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SSID",
+    "value": "ATQOFBL42ZvQCNExx",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.452384,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "APISID",
+    "value": "tUeCAjKMqxY2-sNv/AJoAzAq85TV_hTICV",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.452418,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.452501,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.45254,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.45257,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "NID",
+    "value": "523=PEgZQYIUt0ov5WNnJVcPDSxGyeJIAHCt94aS9Cpu9y1UN3txQ9x96VK6OAYpO-PgWlSrD83xCu1PYhYBCgF2gq6ttKAcIEI1mLCOqS6gOM4pJ-hq2P4b2Itb7iwiNzTztlYg4dcdC90m_VVw_vH9B0sOJUTsIpndyMQD0snLYayiK-bCvPzsh0ZLw6bX2YzhfnuA_SUHzjc",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1761973336.452599,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBYgBQ5lqdPKLZEeXkh4SyRgACgYKAbcSARYSFQHGX2MipMrdfWEua4agfD8-j0y1JBoVAUF8yKpjvOQGH09iPaQOGtEucce20076",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.452629,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PSID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBvO87fkPMcOmIkRXBd9IkBQACgYKAboSARYSFQHGX2MiIAYGsD3M1z8dN7Q12crJ0RoVAUF8yKp-rZqVH-KLVrIzC3hO5vTh0076",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.452654,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PSID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBAoV1bN05Lkp9gJLFPSh7OgACgYKARISARYSFQHGX2Mi7JLOIgdVKRuDBTvltoNXexoVAUF8yKocfckah280TDKeGJ-mFLu90076",
+    "domain": ".google.co.th",
+    "path": "/",
+    "expires": 1780722136.452674,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "HSID",
+    "value": "ACw_BkyASlSgkmJ4j",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.672857,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SSID",
+    "value": "ATQOFBL42ZvQCNExx",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.672967,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "APISID",
+    "value": "tUeCAjKMqxY2-sNv/AJoAzAq85TV_hTICV",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.673025,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "SAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.673067,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.673097,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PAPISID",
+    "value": "fQzX-RMml6ju6Dei/AC91BBuTbclme8cBS",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.673152,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "NID",
+    "value": "523=fFSco3FMk8E8llGzhVKYPTK18_cggUS_sdH2cFw4rokJ0gepwARJN-AO1SYf3nf4nyRXH4Z5TT1GwEp9RRXWLnSbDNVtuU1K6qFIUlJglvCTXmfiaVjpBbe7AkCe05Nm-j9hig17LArfRRqUgWyAnZo5g6T6ec9s6J9URI-gIMTRdD_vp646ls0I5X_dZLGuLFHCcMZoXDE",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1761973336.673183,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBYgBQ5lqdPKLZEeXkh4SyRgACgYKAbcSARYSFQHGX2MipMrdfWEua4agfD8-j0y1JBoVAUF8yKpjvOQGH09iPaQOGtEucce20076",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.673216,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PSID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBvO87fkPMcOmIkRXBd9IkBQACgYKAboSARYSFQHGX2MiIAYGsD3M1z8dN7Q12crJ0RoVAUF8yKp-rZqVH-KLVrIzC3hO5vTh0076",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.673244,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PSID",
+    "value": "g.a000wgjYIpauW3_HcQIy_tNDIpRPpxINYV01rBN4ckiJJ1n1ORKBAoV1bN05Lkp9gJLFPSh7OgACgYKARISARYSFQHGX2Mi7JLOIgdVKRuDBTvltoNXexoVAUF8yKocfckah280TDKeGJ-mFLu90076",
+    "domain": ".google.com.ph",
+    "path": "/",
+    "expires": 1780722136.673282,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "SIDCC",
+    "value": "AKEyXzWkx7NkHNFpyN0Wbx2igRxZsvMXRdhCWrrL9PriyH78aTfNq7itppln8BaGsWi3NShq",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1777698136.991024,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-1PSIDCC",
+    "value": "AKEyXzUj1tXao3ah-ltqNr1R97q33S5c40j78ZzJyedI16t7h7ygRAUSf0RUqxc9IWeOnmwYwA",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1777698136.991104,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "__Secure-3PSIDCC",
+    "value": "AKEyXzVEEW6nVpWIihAdlEYx0DAjA_cD96c48Dh_ojBuBY01ZbsCQuPDgr9-W3WAg12TqVzNBg",
+    "domain": ".google.com",
+    "path": "/",
+    "expires": 1777698136.991143,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "_pt",
+    "value": "1--WyI5MDJlNzA0MjVmOTlkZjIzNjBjNGJkMDdkYTQyYzZkYjEzNzdmNTY4Il0%3D--1efcbc80dc82bcd3c7bcfc0645e425d32df83e30",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "hli",
+    "value": "1",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722138.49432,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_aaj",
+    "value": "22%7C1%7Cd4LNru88vwGpG8HQplrJv9IRmR4R9RfWr%2FxoWhfeJZfvS3dPVgQd8T5DHB6Xv%2Fzkbm4VufGNkNUPy%2FkVCLu2BDNI7QB%2BMA0QujasaQgadeanRfA0A9NPVn4BijSVXcu1LI0eX4LQcflYd2AwC%2BY5eq73nK4Q1m6NlGTTzoRIwr6TWk9jHcSFQDbOCsHosPUPdecerWWMk9slAQ1WVdr14o9LVltcbNBE9yZllHAlx%2FMRY71esMHNs%2BKSgF8%2Bwdmo2nahhKXjASGG7xtQAtPfRTgL9scczl7jfe03C7KB8SllHTFsqeGlMytqtXisg2vwY1VMqAGWSJSXU5%2BrWzHsTmRl5wV3cCTv5%2FQcFF%2F%2FKLJq2LFgX6nsBbqS2u21Eu0YziGiq6xICj4nGgSJu2oof8gsVwNljXHlq3ygKTLNPz4bBZsTyegotkogimROmAQv0413PFvCgj5VFCr4dFCOLHlNFOGDZMJLwHGfus%2FcfDsMYBcfRXir2%2BllEdp0dtGY5ncghS2kAzTaJ5iHxXSe6jbg6iLJD%2Fa7vFvCxgp%2F4fRU5P98cgDpOtIi9SAfl3R9elUufXGbMFxOutjC49T4kzjXilEtvoJAbKu0kNZ7b6FJJT8nXsdDIJ%2BbQel34BgyG0QrgL74uCmNwuzcb1MvmmQYb3L7y%2FkKY12N%2BfDDVBTOcX2WesmyQJQGIVvsileRNBSybX1y1h9SX7hOFPfam0yxkFGsYTdj9p6ihet%2BjEHAWrnb4GM24%2Bavq4B3XKC7qKcmN6dj3TALhnerRyKCVi8R2fl1xKB1Wkyyg2q5%2Bddz0iveySMyAzk%3D",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722138.494337,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "rclmd",
+    "value": "%7B%22653929118%22%3A%22google%22%7D",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722138.49436,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_aat",
+    "value": "0%7CcxkWM2sZ%2BMtfT6cZqiHRp%2BHXSlTAlYbKe6Z2fv5VrSy2qyKVxGf6wIGA10tqXhM%2F",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722138.494375,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "li",
+    "value": "1",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722138.494391,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "_user_attributes",
+    "value": "%7B%22id_str%22%3A%22653929118%22%2C%22curr%22%3A%22THB%22%2C%22id%22%3A653929118%7D",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1762059737.494506,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "rclu",
+    "value": "%7B%22653929118%22%3A%221dRRaAaC7n26BGtbVRgY9GJKQ5R7iQ7D7Z1mG0DVu%2Fw%3D%22%7D",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1780722138.494429,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "oauth_popup",
+    "value": "%7B%22success%22%3Atrue%2C%22data%22%3A%7B%7D%2C%22close_window%22%3Atrue%7D",
+    "domain": "www.airbnb.com",
+    "path": "/",
+    "expires": 1762059737.494554,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "hli",
+    "value": "1",
+    "domain": ".www.airbnb.com",
+    "path": "/",
+    "expires": 1762059738,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "jitney_client_session_updated_at",
+    "value": "1746162138",
+    "domain": ".www.airbnb.com",
+    "path": "/",
+    "expires": 1746248537.180129,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "bm_sv",
+    "value": "BA1AEB85816DE1C7B485C800ABEBC156~YAAQZColAefvG4aWAQAAdcFfjxvuRLeOeTRaJW3fReF5D2mNJ6nfqjp0Nx8A4wKQdU2evsro6mfL4cND2gEzbuUq4ww5kybtNlWutAQ1A6+QSunx7V0k+mbti82ELhVtFY/18jQeyTdof/U90RHZHuFDVxaTCxbm52OcB7XBcSOmdQbWXX75M3Ojjw3fOzDJh7wjEz8oDYZ6cFdF9OXUzn14SuoxxC3sJn6HrgoY4bJtxvsbTFfy62/6P3LpjvsJQA==~1",
+    "domain": ".airbnb.com",
+    "path": "/",
+    "expires": 1746169314.520273,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  }
+]
