@@ -54,33 +54,42 @@ async function listing_main() {
     // await page.waitForTimeout(50000);
     
     await page.close();
-    const response = await fetch('http://ds2.d3.net:8069/jsonrpc', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "jsonrpc": "2.0",
-        "method": "call",
-        "params": {
-          "service": "object",
-          "method": "execute_kw",
-          "args": [
-            "odoo_botification_dryrun",
-            2,
-            "b81ba55cf3a383979acaea298c2da9a7659bf243",
-            "managebnb.property",
-            "collect_scrape_airbnb_bookings",
-            sets
-          ]
-        }
-      }
-      )
-    });
+    
 
-await response();
+await response(sets);
     
 };
+
+
+async function response(sets)
+{
+  try {
+    const response = await axios.post('http://ds2.d3.net:8069/jsonrpc', {
+      jsonrpc: '2.0',
+      method: 'call',
+      params: {
+        service: 'object',
+        method: 'execute_kw',
+        args: [
+          'odoo_botification_dryrun',              // database name
+          2,                                       // user ID
+          'b81ba55cf3a383979acaea298c2da9a7659bf243', // access token or password
+          'managebnb.property',                    // model
+          'collect_scrape_airbnb_bookings',        // method
+          sets                                     // method arguments
+        ]
+      }
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('Result:', response.data);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
 
 function convertDateToDigits(dateStr) {
     // Create a Date object from the input string
