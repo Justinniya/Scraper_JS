@@ -40,7 +40,7 @@ async function listing_main() {
         const uid = findUID(final_listing);
         const result = separateCurrencySymbol(price);
         sets.push({
-            'reservation_code': final_listing,
+            'reservation_code': code,
             'guest_name':guest_name,
             'check_in':convertDateToDigits(check_in),
             'check_out': convertDateToDigits(check_out),
@@ -71,10 +71,10 @@ async function response(sets)
         "args": [
           "odoo_botification_dryrun",
           2,
-          "b81ba55cf3a383979acaea298c2da9a7659bf243",
+          "ef9b3ff8cf437acfc67a832497aece3e727b0bc4",
           "managebnb.property",
           "collect_scrape_airbnb_bookings",
-          sets
+          [sets]
         ]
       }
     }, {
