@@ -119,15 +119,16 @@ app.get('/scraping/airbnb/completed_listing', async (res) => {
     //     return res.status(400).json({ error: 'URL, feelingEmoji, textPost and file are required' });
     // }
 
-    console.log("running..");
+    // console.log("running..");
+    return ({ message: 'Welcome to the Airbnb Scraper API!' });
 
-    try {
-        let result = await listing_main();
-        res.status(200).json({ message: result });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Error during posting to Facebook' });
-    }
+    // try {
+    //     let result = await listing_main();
+    //     res.status(200).json({ message: result });
+    // } catch (err) {
+    //     console.error(err);
+    //     res.status(500).json({ error: 'Error during posting to Facebook' });
+    // }
 });
 
 app.get('/scraping/airbnb/home', async () => {
