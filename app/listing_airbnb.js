@@ -40,6 +40,7 @@ async function listing_main() {
         const uid = findUID(final_listing);
         const result = separateCurrencySymbol(price);
         sets.push({
+            'reservation_code': final_listing,
             'guest_name':guest_name,
             'check_in':convertDateToDigits(check_in),
             'check_out': convertDateToDigits(check_out),
@@ -61,19 +62,19 @@ async function listing_main() {
 async function response(sets)
 {
   try {
-    const response = await axios.post('http://ds2.d3.net:8069/jsonrpc', {
-      jsonrpc: '2.0',
-      method: 'call',
-      params: {
-        service: 'object',
-        method: 'execute_kw',
-        args: [
-          'odoo_botification_dryrun',              // database name
-          2,                                       // user ID
-          'ef9b3ff8cf437acfc67a832497aece3e727b0bc4', // access token or password
-          'managebnb.property',                    // model
-          'collect_scrape_airbnb_bookings',        // method
-          sets                                     // method arguments
+    const response = await axios.post('http://ds2.d3.net:8069/jsonrpc', {{
+      "jsonrpc": "2.0",
+      "method": "call",
+      "params": {
+        "service": "object",
+        "method": "execute_kw",
+        "args": [
+          "odoo_botification_dryrun",
+          2,
+          "b81ba55cf3a383979acaea298c2da9a7659bf243",
+          "managebnb.property",
+          "collect_scrape_airbnb_bookings",
+          [[{"reservation_code":"viurwnldmew","guest_name":"Ella Ellmaurer","check_in":"2025-04-24","check_out":"2025-05-01","currency":"THB","price":8793.79,"airbnb_uid":"1236555571957374980"}]]
         ]
       }
     }, {
