@@ -119,14 +119,15 @@ app.get('/scraping/airbnb/completed_listing', async (req, res) => {
     //     return res.status(400).json({ error: 'URL, feelingEmoji, textPost and file are required' });
     // }
 
-    try {
-        await listing_main();
-        res.sendStatus(200);
-        
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Error during posting to Facebook' });
-    }
+    res.sendStatus(200); // Send 200 OK immediately
+
+    listing_main()
+    .then(result => {
+        console.log('listing_main finished:', result);
+    })
+    .catch(err => {
+        console.error('listing_main error:', err);
+    });
 });
 
 app.get('/scraping/airbnb/home', async () => {
