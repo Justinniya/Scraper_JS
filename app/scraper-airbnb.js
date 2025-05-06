@@ -120,8 +120,8 @@ app.get('/scraping/airbnb/completed_listing', async (req, res) => {
     // }
 
     try {
-        res.sendStatus(200);
         await listing_main();
+        res.sendStatus(200);
         
     } catch (err) {
         console.error(err);
