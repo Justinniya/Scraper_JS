@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install dependencies inside the container
 # RUN npm install
+RUN npm install node-fetch@2
 RUN npx playwright install-deps chromium
 
 # Install ONLY Chromium browser for Playwright
