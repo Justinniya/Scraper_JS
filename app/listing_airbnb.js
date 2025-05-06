@@ -1,7 +1,6 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const { set } = require('date-fns/set');
-const fetch = require('node-fetch');
 
 async function listing_main() {
     const browser = await chromium.launch({ headless: true  ,args: ['--start-maximized'] });
