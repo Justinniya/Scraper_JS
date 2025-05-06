@@ -86,6 +86,10 @@ app.post('/scraping/airbnb/postToFacebook', async (req, res) => {
     }
 });
 
+app.get('/scraping/airbnb/home', async () => {
+    return ({ message: 'Welcome to the Airbnb Scraper API!' });
+});
+
 
 app.post('/scraping/airbnb/create_listing', async (req, res) => {
     const { data } = req.body;
@@ -108,28 +112,16 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
     }
 });
 
-app.post('/scraping/airbnb/completed_listing', async (req, res) => {
-    const { data } = req.body;
-    console.log(data);
-    if (!data ) {
-        return res.status(400).json({ error: 'URL, feelingEmoji, textPost and file are required' });
-    }
-
-    console.log("running..");
-
+app.get('/scraping/airbnb/completed_listing', async (req, res) => {
     try {
-        let result = await listing_main();
+        console.log('Running listing_main()...');
+        const result = await listing_main();
         res.status(200).json({ message: result });
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Error during posting to Facebook' });
+        console.error('Error:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
-app.get('/scraping/airbnb/home', async () => {
-    return ({ message: 'Welcome to the Airbnb Scraper API!' });
-});
-
 
 
 
