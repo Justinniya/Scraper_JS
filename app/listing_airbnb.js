@@ -19,6 +19,17 @@ async function listing_main() {
     await page.waitForTimeout(2000);
     await page.goto('https://www.airbnb.com/hosting/reservations/completed');
     await page.waitForTimeout(2000);
+    await page.locator('xpath=//*[@id="site-content"]/div[1]/section/div[2]/div[1]/div/div/div[1]/div/button').click();
+    await page.waitForTimeout(2000);
+    await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[1]/div[1]/label/div[2]').click();
+    await selectDateFromCalendar(page, 1, 5, 2025, true);  
+
+    await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[2]/div[1]/label/div[2]').click();
+    await selectDateFromCalendar(page, 10, 5, 2025, false); 
+    await page.waitForTimeout(2000);
+    await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/footer/button').nth(1).click();
+    await page.waitForTimeout(20000);
+
     let number_of_lines = await page.locator('[data-testid="host-reservations-table-row"]').count();
     let final_listing;
     let sets = [];
@@ -58,6 +69,25 @@ async function listing_main() {
     await response(sets);
     return  sets;
 };
+
+async function selectDateFromCalendar(page, day, month, year, isStartDate = true) {
+  const mm = String(month).padStart(2, '0');
+  const dd = String(day).padStart(2, '0');
+  const dateSelector = `[data-testid="calendar-day-${mm}/${dd}/${year}"]`;
+
+  const dateInputSelector = isStartDate
+    ? '[data-testid="toolbar_filter_startdate_input"]'
+    : '[data-testid="toolbar_filter_enddate_input"]';
+
+  // Click on the date input field to open the calendar
+  await page.click(dateInputSelector);
+
+  // Wait for the date to appear in the calendar
+  await page.waitForSelector(dateSelector);
+
+  // Click the date
+  await page.click(dateSelector);
+}
 
 async function response(sets)
 {
