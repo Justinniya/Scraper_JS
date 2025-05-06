@@ -118,7 +118,7 @@ app.get('/scraping/airbnb/completed_listing', async (req, res) => {
     // if (!url || !data ) {
     //     return res.status(400).json({ error: 'URL, feelingEmoji, textPost and file are required' });
     // }
-
+    console.log("running");
     res.sendStatus(200); // Send 200 OK immediately
 
     listing_main()
