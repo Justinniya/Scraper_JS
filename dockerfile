@@ -22,6 +22,7 @@ RUN npx playwright install-deps chromium
 
 # Install ONLY Chromium browser for Playwright
 RUN npx playwright install
+RUN npm install axios
 COPY app/ .
 
 # Expose the port the app will run on
