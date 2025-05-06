@@ -112,23 +112,40 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
     }
 });
 
-app.get('/scraping/airbnb/completed_listing', async (req, res) => {
-    // const { data } = req.body;
-    // console.log(data);
-    // if (!url || !data ) {
-    //     return res.status(400).json({ error: 'URL, feelingEmoji, textPost and file are required' });
-    // }
+// app.get('/scraping/airbnb/completed_listing', async (req, res) => {
+//     // const { data } = req.body;
+//     // console.log(data);
+//     // if (!url || !data ) {
+//     //     return res.status(400).json({ error: 'URL, feelingEmoji, textPost and file are required' });
+//     // }
 
-    console.log('running..');
-    let result = await listing_main();
-    res.status(200).json({ message: result });
-    // try {
+//     console.log('running..');
+//     let result = await listing_main();
+//     res.status(200).json({ message: result });
+//     // try {
         
-    // } catch (err) {
-    //     console.error(err);
-    //     res.status(500).json({ error: 'Error during posting to Facebook' });
-    // }
+//     // } catch (err) {
+//     //     console.error(err);
+//     //     res.status(500).json({ error: 'Error during posting to Facebook' });
+//     // }
+// });
+
+
+app.get('/scraping/airbnb/completed_listing', (req, res) => {
+    console.log('Request received. Responding immediately with 200...');
+    
+    res.sendStatus(200); // Responds right away
+
+    // Run the task after response is sent
+    listing_main()
+        .then(result => {
+            console.log('listing_main finished:', result);
+        })
+        .catch(err => {
+            console.error('Error in listing_main:', err);
+        });
 });
+
 
 app.get('/scraping/airbnb/home', async () => {
     return ({ message: 'Welcome to the Airbnb Scraper API!' });
