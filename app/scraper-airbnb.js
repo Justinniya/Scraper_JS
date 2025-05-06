@@ -112,7 +112,7 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
     }
 });
 
-app.get('/scraping/airbnb/completed_listing', async (res) => {
+app.get('/scraping/airbnb/completed_listing', async () => {
     // const { data } = req.body;
     // console.log(data);
     // if (!url || !data ) {
