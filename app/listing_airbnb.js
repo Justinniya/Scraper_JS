@@ -47,11 +47,11 @@ async function listing_main(data) {
     for(let i = 0; number_of_lines>i; i++){
         let lines = await page.locator('[data-testid="host-reservations-table-row"]').nth(i);
         let guest_name = await lines.locator('.l1ovpqvx.b1uxatsa.c1qih7tm.dir.dir-ltr').textContent();
-        let check_in = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(3).textContent();
-        let check_out = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(4).textContent();
-        let listing = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(6).textContent();
-        let price = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(8).textContent();
-        let code = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(7).textContent();
+        let check_in = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(3).textContent();
+        let check_out = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(4).textContent();
+        let listing = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(6).textContent();
+        let price = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(8).textContent();
+        let code = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(7).textContent();
         const page1 = await context.newPage();
         let url = `https://www.airbnb.com/hosting/reservations/completed?confirmationCode=${code}`
         await page1.goto(url);
@@ -69,7 +69,15 @@ async function listing_main(data) {
             'price':result.amount,
             'airbnb_uid': uid
         });
-        
+        console.log({
+          'reservation_code': code,
+          'guest_name':guest_name,
+          'check_in':convertDateToDigits(check_in),
+          'check_out': convertDateToDigits(check_out),
+          'currency': result.symbol,
+          'price':result.amount,
+          'airbnb_uid': uid
+      });
     
     }
     // console.log(sets);
