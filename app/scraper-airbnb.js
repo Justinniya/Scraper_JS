@@ -113,9 +113,10 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
 });
 
 app.get('/scraping/airbnb/completed_listing', async (req, res) => {
+    const { body } = req.body;
     try {
         console.log('Running listing_main()...');
-        const result = await listing_main();
+        const result = await listing_main(body);
         res.status(200).json({ message: result });
     } catch (err) {
         console.error('Error:', err);
