@@ -4,7 +4,7 @@ const { set } = require('date-fns/set');
 const axios = require('axios');
 
 async function listing_main(data) {
-  console.log(data);
+  // console.log(data);
     const browser = await chromium.launch({ headless: true ,args: ['--window-size=1920,1080'] });
     const context = await browser.newContext({userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',viewport: { width: 1920, height: 1080 }});
     const page = await context.newPage();
@@ -12,7 +12,7 @@ async function listing_main(data) {
     try{
     const cookies = JSON.parse(fs.readFileSync('airbnb_listing.json', 'utf-8'));
     await context.addCookies(cookies);
-    console.log("done");
+    console.log("Running....");
     }catch(err){
         console.log('No cookies to add');
     }
@@ -68,17 +68,7 @@ async function listing_main(data) {
             'currency': result.symbol,
             'price':result.amount,
             'airbnb_uid': uid
-        });
-        console.log({
-          'reservation_code': code,
-          'guest_name':guest_name,
-          'check_in':convertDateToDigits(check_in),
-          'check_out': convertDateToDigits(check_out),
-          'currency': result.symbol,
-          'price':result.amount,
-          'airbnb_uid': uid
-      });
-    
+        });    
     }
     // console.log(sets);
     // await page.waitForTimeout(50000);
