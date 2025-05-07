@@ -75,9 +75,9 @@ async function listing_main(data) {
     // await page.waitForTimeout(50000);
     
     await page.close();
-    await response(sets);
+    let finaL_response = await response(sets);
     // console.log(sets);
-    return sets;
+    return finaL_response;
 };
 
 async function selectDateFromCalendar(page, day, month, year, isStartDate = true) {
