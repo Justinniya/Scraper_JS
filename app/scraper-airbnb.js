@@ -123,7 +123,10 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
     }
 });
 
-
+app.get('/scraping/airbnb/completed_listing', (req, res) => {
+    res.send('GET route is working. Server is up.');
+  });
+  
 
 
 const port = 3000;
