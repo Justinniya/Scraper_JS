@@ -112,16 +112,33 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
     }
 });
 
-app.post('/scraping/airbnb/completed_listing', async (req, res) => {
-    try {
-        console.log('Running listing_main()...');
-        const result = await listing_main(req.body);
-        res.status(200).json({ message: result });
-    } catch (err) {
-        console.error('Error:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
+// app.post('/scraping/airbnb/completed_listing', async (req, res) => {
+//     try {
+//         console.log('Running listing_main()...');
+//         const result = await listing_main(req.body);
+//         res.status(200).json({ message: result });
+//     } catch (err) {
+//         console.error('Error:', err);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
+
+app.post('/scraping/airbnb/completed_listing', (req, res) => {
+    // Send fast response with only status code
+    res.sendStatus(200);
+
+    // Do work in background
+    listing_main(req.body)
+        .then(result => {
+            console.log('listing_main result:', result);
+            // Can't send another response here
+        })
+        .catch(err => {
+            console.error('listing_main error:', err);
+            // Can't send another response here either
+        });
 });
+
 
 app.get('/scraping/airbnb/completed_listing', (req, res) => {
     res.send('GET route is working. Server is up.');
