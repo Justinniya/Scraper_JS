@@ -132,7 +132,7 @@ async function response(sets)
       }
     });
 
-    console.log('Result:', response.data);
+    return {'Result': response.data};
   } catch (error) {
     console.error('Error:', error.message);
   }
