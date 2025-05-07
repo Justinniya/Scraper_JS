@@ -114,7 +114,7 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
 
 app.post('/scraping/airbnb/completed_listing', async (req, res) => {
     try {
-        res.sendStatus(200);
+        res.status(200).json({ "status code": 200 });
         console.log('Running listing_main()...');
         const result = await listing_main(req.body);
         // res.status(200).json({ message: result });
