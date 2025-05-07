@@ -25,7 +25,7 @@ async function listing_main() {
     
     for(let i = 0; number_of_lines>i; i++){
         let lines = await page.locator('[data-testid="host-reservations-table-row"]').nth(i);
-        let guest_name = await lines.textContent('ol.lgx66tx li.l7n4lsf:nth-of-type(2)');
+        let guest_name = await lines.textContent('ol.lgx66tx li.l7n4lsf:nth-of-type(2)').trim();
         let check_in = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(3).textContent();
         let check_out = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(4).textContent();
         let listing = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(6).textContent();
@@ -40,7 +40,7 @@ async function listing_main() {
         const uid = findUID(final_listing);
         const result = separateCurrencySymbol(price);
         sets.push({
-            'guest_name':guest_name.trim(),
+            'guest_name':guest_name,
             'check_in':convertDateToDigits(check_in),
             'check_out': convertDateToDigits(check_out),
             'currency': result.symbol,
