@@ -86,8 +86,8 @@ app.post('/scraping/airbnb/postToFacebook', async (req, res) => {
     }
 });
 
-app.get('/scraping/airbnb/home', async () => {
-    return ({ message: 'Welcome to the Airbnb Scraper API!' });
+app.get('/scraping/airbnb/home', async (req, res) => {
+    res.send({ message: 'Welcome to the Airbnb Scraper API!' });
 });
 
 
