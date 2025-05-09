@@ -72,6 +72,7 @@ async function listing_main(data) {
     }
     // console.log(sets);
     // await page.waitForTimeout(50000);
+    const cookies = await context.cookies();
     await page.waitForTimeout(2000);
     fs.unlinkSync('airbnb_listing.json');
     await page.waitForTimeout(2000);
