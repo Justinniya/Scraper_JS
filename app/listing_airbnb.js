@@ -45,7 +45,10 @@ async function listing_main(data) {
     await page.screenshot({ path: 'screenshot.png', fullPage: true });
     let next = true
     let sets = [];
+    let number = 1
     while(next){
+      console.log(number);
+      number++;
       await page.waitForTimeout(5000);
       let number_of_lines = await page.locator('[data-testid="host-reservations-table-row"]').count();
       let final_listing;
@@ -79,18 +82,27 @@ async function listing_main(data) {
         }
 
       }
-      try{
-        let haveNext = await page.locator('xpath=//*[@id="site-content"]/div[1]/section/footer/div/nav/div/button[4]');
-        if(haveNext){
-          await page.waitForTimeout(2000);
-          await haveNext.click();
-          console.log("next");
-          continue;
+      try {
+          const haveNext = page.locator('xpath=//*[@id="site-content"]/div[1]/section/footer/div/nav/div/button[4]');
+
+          // Check if button is visible and NOT disabled
+          const isVisible = await haveNext.isVisible();
+          const isEnabled = await haveNext.isEnabled();
+
+          if (isVisible && isEnabled) {
+            await page.waitForTimeout(2000);
+            await haveNext.click();
+            console.log('next');
+            // continue; // Only use this if you're inside a loop
+          } else {
+            console.log('Button is disabled or not visible');
+            next = false; // If you're in a loop, this breaks it
+          }
+
+        } catch (e) {
+          next = false;
         }
-      }catch(e){
-        next = false;
       }
-    }
     // console.log(sets);
     // await page.waitForTimeout(50000);
     const cookies = await context.cookies();
