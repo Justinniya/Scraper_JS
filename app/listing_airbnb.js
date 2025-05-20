@@ -25,13 +25,16 @@ async function listing_main(data) {
     await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[1]/div[1]/label/div[2]').click();
     const StartDate = data['filter_start_date'];
     const [start_year,start_month, start_day] = StartDate.split('-').map(Number);
-    await selectDateFromCalendar(page, start_day, start_month, start_year, true);  
+    let result1 = formatYearMonthToWords(start_year,start_month);
+    await page.waitForTimeout(5000);
+    await selectDateFromCalendar(page, start_day, start_month, start_year, true,result1);  
 
     await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[2]/div[1]/label/div[2]').click();
     const EndDate = data['filter_end_date'];
     const [end_year,end_month, end_day] = EndDate.split('-').map(Number);
-    await selectDateFromCalendar(page, end_day, end_month, end_year, false); 
-    await page.waitForTimeout(2000);
+    let result2 = formatYearMonthToWords(end_year,end_month);
+    await selectDateFromCalendar(page, end_day, end_month, end_year, false,result2); 
+    await page.waitForTimeout(20000);
     
     // await footer.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
     await page.waitForTimeout(500);
@@ -60,6 +63,7 @@ async function listing_main(data) {
         await page.bringToFront();
         const uid = findUID(final_listing,data);
         const result = separateCurrencySymbol(price);
+        if(uid){
         sets.push({
             'reservation_code': code,
             'guest_name':guest_name,
@@ -69,6 +73,8 @@ async function listing_main(data) {
             'price':result.amount,
             'airbnb_uid': uid
         });    
+      }
+
     }
     // console.log(sets);
     // await page.waitForTimeout(50000);
@@ -84,23 +90,39 @@ async function listing_main(data) {
     return finaL_response;
 };
 
-async function selectDateFromCalendar(page, day, month, year, isStartDate = true) {
+async function selectDateFromCalendar(page, day, month, year, isStartDate = true,year_and_date) {
   const mm = String(month).padStart(2, '0');
   const dd = String(day).padStart(2, '0');
-  const dateSelector = `[data-testid="calendar-day-${mm}/${dd}/${year}"]`;
+  let final_date = await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div/div[2]/div[2]/div/div[2]/div/div/div/h3').textContent();
+  while(true){
+    try{
+    
+      const dateSelector = `[data-testid="calendar-day-${mm}/${dd}/${year}"]`;
 
-  const dateInputSelector = isStartDate
-    ? '[data-testid="toolbar_filter_startdate_input"]'
-    : '[data-testid="toolbar_filter_enddate_input"]';
+      const dateInputSelector = isStartDate
+        ? '[data-testid="toolbar_filter_startdate_input"]'
+        : '[data-testid="toolbar_filter_enddate_input"]';
+      await page.click(dateInputSelector);
+
+    // Wait for the date to appear in the calendar
+      await page.waitForSelector(dateSelector);
+
+      // Click the date
+      await page.click(dateSelector);
+      break;
+  }catch{
+    if(isFirstBeforeSecond(final_date,year_and_date)){
+      await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div[2]/button').click();
+    }else{
+      await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/button').click();
+    }
+    
+    }
+  }
+  
 
   // Click on the date input field to open the calendar
-  await page.click(dateInputSelector);
-
-  // Wait for the date to appear in the calendar
-  await page.waitForSelector(dateSelector);
-
-  // Click the date
-  await page.click(dateSelector);
+  
 }
 
 async function response(sets)
@@ -159,6 +181,16 @@ function separateCurrencySymbol(amount) {
     }
     return null;
   }
+
+function parseMonthYear(str) {
+  return new Date(str); // JavaScript can parse "May 2025" directly
+}
+
+function isFirstBeforeSecond(dateStr1, dateStr2) {
+  const d1 = parseMonthYear(dateStr1);
+  const d2 = parseMonthYear(dateStr2);
+  return d1 < d2;
+}
 
 function findUID(entry,dataParam) {
     const data = dataParam['for_catching_airbnb_uid'];
@@ -241,6 +273,11 @@ function sign(symbol){
         '₮': 'AFN'   // Afghan Afghani
       };
       return currencyMap[symbol];
+}
+
+function formatYearMonthToWords(year,month) {
+  const date = new Date(`${year}-${month}-01`);
+  return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
 }
 
 
