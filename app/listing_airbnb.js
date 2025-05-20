@@ -84,6 +84,7 @@ async function listing_main(data) {
         if(haveNext){
           await page.waitForTimeout(2000);
           await haveNext.click();
+          console.log("next");
           continue;
         }
       }catch(e){
