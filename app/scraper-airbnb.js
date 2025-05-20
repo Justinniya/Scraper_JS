@@ -11,7 +11,7 @@ const express = require('express');
 const cors = require('cors');
 const {listing_main} = require('./listing_airbnb.js')
 const { url } = require('inspector');
-const main_edit = require('./edit_listing/main.js;')
+// const main_edit = require('./edit_listing/main.js;')
 const app = express();
 
 app.use(cors());
@@ -130,18 +130,18 @@ app.get('/scraping/airbnb/completed_listing', (req, res) => {
   res.send('GET route is working. Server is up.');
 });
 
-app.post('/scraping/airbnb/edit_listing', async (req, res) => {
-    try {
-        res.status(200).json({ "status code": 200 });
-        console.log('Running Edit_Listing()...');
-        const result = await listing_main(req.body);
-        // res.status(200).json({ message: result });
-        console.log({ 'message': result});
-    } catch (err) {
-        console.error('Error:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
+// app.post('/scraping/airbnb/edit_listing', async (req, res) => {
+//     try {
+//         res.status(200).json({ "status code": 200 });
+//         console.log('Running Edit_Listing()...');
+//         const result = await listing_main(req.body);
+//         // res.status(200).json({ message: result });
+//         console.log({ 'message': result});
+//     } catch (err) {
+//         console.error('Error:', err);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
 
 app.get('/scraping/airbnb/completed_listing', (req, res) => {
   res.send('GET route is working. Server is up.');
