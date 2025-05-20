@@ -43,38 +43,52 @@ async function listing_main(data) {
     
     await page.waitForTimeout(20000);
     await page.screenshot({ path: 'screenshot.png', fullPage: true });
-    let number_of_lines = await page.locator('[data-testid="host-reservations-table-row"]').count();
-    let final_listing;
+    let next = true
     let sets = [];
-    
-    for(let i = 0; number_of_lines>i; i++){
-        let lines = await page.locator('[data-testid="host-reservations-table-row"]').nth(i);
-        let guest_name = await lines.locator('.l1ovpqvx.b1uxatsa.c1qih7tm.dir.dir-ltr').textContent();
-        let check_in = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(3).textContent();
-        let check_out = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(4).textContent();
-        let listing = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(6).textContent();
-        let price = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(8).textContent();
-        let code = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(7).textContent();
-        const page1 = await context.newPage();
-        let url = `https://www.airbnb.com/hosting/reservations/completed?confirmationCode=${code}`
-        await page1.goto(url);
-        final_listing = await page1.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div/div/div/div[2]/div/div[1]/div[1]/div[2]').textContent();
-        await page1.close();
-        await page.bringToFront();
-        const uid = findUID(final_listing,data);
-        const result = separateCurrencySymbol(price);
-        if(uid){
-        sets.push({
-            'reservation_code': code,
-            'guest_name':guest_name,
-            'check_in':convertDateToDigits(check_in),
-            'check_out': convertDateToDigits(check_out),
-            'currency': result.symbol,
-            'price':result.amount,
-            'airbnb_uid': uid
-        });    
-      }
+    while(next){
+      await page.waitForTimeout(5000);
+      let number_of_lines = await page.locator('[data-testid="host-reservations-table-row"]').count();
+      let final_listing;
+      
+      for(let i = 0; number_of_lines>i; i++){
+          let lines = await page.locator('[data-testid="host-reservations-table-row"]').nth(i);
+          let guest_name = await lines.locator('.l1ovpqvx.b1uxatsa.c1qih7tm.dir.dir-ltr').textContent();
+          let check_in = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(3).textContent();
+          let check_out = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(4).textContent();
+          let listing = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(6).textContent();
+          let price = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(8).textContent();
+          let code = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(7).textContent();
+          const page1 = await context.newPage();
+          let url = `https://www.airbnb.com/hosting/reservations/completed?confirmationCode=${code}`
+          await page1.goto(url);
+          final_listing = await page1.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div/div/div/div[2]/div/div[1]/div[1]/div[2]').textContent();
+          await page1.close();
+          await page.bringToFront();
+          const uid = findUID(final_listing,data);
+          const result = separateCurrencySymbol(price);
+          if(uid){
+          sets.push({
+              'reservation_code': code,
+              'guest_name':guest_name,
+              'check_in':convertDateToDigits(check_in),
+              'check_out': convertDateToDigits(check_out),
+              'currency': result.symbol,
+              'price':result.amount,
+              'airbnb_uid': uid
+          });    
+        }
 
+      }
+      try{
+        let haveNext = await page.locator('xpath=//*[@id="site-content"]/div[1]/section/footer/div/nav/div/button[4]');
+        if(haveNext){
+          await page.waitForTimeout(2000);
+          await haveNext.click();
+          continue;
+        }
+      }catch(e){
+        next = false;
+      }
     }
     // console.log(sets);
     // await page.waitForTimeout(50000);
