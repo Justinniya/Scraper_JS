@@ -47,10 +47,10 @@ async function listing_main(data) {
     let sets = [];
     let number = 1
     while(next){
-      console.log(number);
-      await page.screenshot({ path: 'screenshot.png', fullPage: true });
       number++;
+      console.log(number);
       await page.waitForTimeout(5000);
+      await page.screenshot({ path: 'screenshot.png', fullPage: true });
       let number_of_lines = await page.locator('[data-testid="host-reservations-table-row"]').count();
       let final_listing;
     
@@ -83,8 +83,8 @@ async function listing_main(data) {
 
       }
       try {
-          const haveNext = page.locator('xpath=//*[@id="site-content"]/div[1]/section/footer/div/nav/div/button[4]');
-
+          const haveNext = page.locator(`xpath=//*[@id="site-content"]/div[1]/section/footer/div/nav/div/button[${number + 1}]`);
+        
           // Check if button is visible and NOT disabled
           const isVisible = await haveNext.isVisible();
           const isEnabled = await haveNext.isEnabled();
