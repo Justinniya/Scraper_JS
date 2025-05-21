@@ -44,12 +44,13 @@ async function loginToAirbnb(email, password) {
         await page.goto('https://www.airbnb.com/');
         await page.waitForTimeout(20000);
         if (await page.url() == 'https://www.airbnb.com/') {
+           let uuid = generateUUID();
             await page.screenshot({ path : 'correct.png', fullPage: true });
             const cookies = await context.cookies();
-            fs.writeFileSync('airbnb.json', JSON.stringify(cookies, null, 2));
+            fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
 
             await browser.close();
-            return true;
+            return uuid;
         }
         else {
             await page.screenshot({ path : 'error.png', fullPage: true });
@@ -57,6 +58,15 @@ async function loginToAirbnb(email, password) {
             return false;
         }
 }
+
+function generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 
 module.exports = { loginToAirbnb };
 
