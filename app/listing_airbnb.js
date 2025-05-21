@@ -42,6 +42,7 @@ async function listing_main(data) {
     await apply.click({ force: true});
     
     await page.waitForTimeout(2000);
+    await page.screenshot({ path: 'screenshot.png', fullPage: true });
     let next = true
     let sets = [];
     let number = 1
