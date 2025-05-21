@@ -3,8 +3,8 @@ const fs = require('fs');
 
 async function loginToAirbnb(email, password) {
     try{
-        const browser = await chromium.launch({ headless: true ,args: ['--window-size=1920,1080','--no-sandbox'] });
-        const context = await browser.newContext({userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',viewport: { width: 1420, height: 975 }});
+        const browser = await chromium.launch({ headless: false, args: ['--start-maximized'] });
+        const context = await browser.newContext({userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'});
         const page = await context.newPage();
         await page.waitForTimeout(5000);
         await page.goto('https://www.airbnb.com/login');
