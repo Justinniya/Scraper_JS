@@ -26,7 +26,7 @@ async function listing_main(data) {
     const StartDate = data['filter_start_date'];
     const [start_year,start_month, start_day] = StartDate.split('-').map(Number);
     let result1 = formatYearMonthToWords(start_year,start_month);
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(2000);
     await selectDateFromCalendar(page, start_day, start_month, start_year, true,result1);  
 
     await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[2]/div[1]/label/div[2]').click();
@@ -34,15 +34,14 @@ async function listing_main(data) {
     const [end_year,end_month, end_day] = EndDate.split('-').map(Number);
     let result2 = formatYearMonthToWords(end_year,end_month);
     await selectDateFromCalendar(page, end_day, end_month, end_year, false,result2); 
-    await page.waitForTimeout(20000);
+    await page.waitForTimeout(2000);
     
     // await footer.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
     await page.waitForTimeout(500);
     let apply = await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/footer/button').nth(1);
     await apply.click({ force: true});
     
-    await page.waitForTimeout(20000);
-    await page.screenshot({ path: 'screenshot.png', fullPage: true });
+    await page.waitForTimeout(2000);
     let next = true
     let sets = [];
     let number = 1
@@ -52,23 +51,22 @@ async function listing_main(data) {
       await page.waitForTimeout(5000);
       let number_of_lines = await page.locator('[data-testid="host-reservations-table-row"]').count();
       let final_listing;
-      
-      for(let i = 0; number_of_lines>i; i++){
-          let lines = await page.locator('[data-testid="host-reservations-table-row"]').nth(i);
-          let guest_name = await lines.locator('.l1ovpqvx.b1uxatsa.c1qih7tm.dir.dir-ltr').textContent();
-          let check_in = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(3).textContent();
-          let check_out = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(4).textContent();
-          let listing = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(6).textContent();
-          let price = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(8).textContent();
-          let code = await lines.locator('.cw5trde.armbts6.dir.dir-ltr').nth(7).textContent();
-          const page1 = await context.newPage();
-          let url = `https://www.airbnb.com/hosting/reservations/completed?confirmationCode=${code}`
-          await page1.goto(url);
-          final_listing = await page1.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div/div/div/div[2]/div/div[1]/div[1]/div[2]').textContent();
-          await page1.close();
-          await page.bringToFront();
-          const uid = findUID(final_listing,data);
-          const result = separateCurrencySymbol(price);
+    
+    for(let i = 0; number_of_lines>i; i++){
+        let lines = await page.locator('[data-testid="host-reservations-table-row"]').nth(i);
+        let guest_name = await lines.locator('.l1ovpqvx.atm_1he2i46_1k8pnbi_10saat9.atm_yxpdqi_1pv6nv4_10saat9.atm_1a0hdzc_w1h1e8_10saat9.atm_2bu6ew_929bqk_10saat9.atm_12oyo1u_73u7pn_10saat9.atm_fiaz40_1etamxe_10saat9.b1uxatsa.atm_c8_1kw7nm4.atm_bx_1kw7nm4.atm_cd_1kw7nm4.atm_ci_1kw7nm4.atm_g3_1kw7nm4.atm_9j_tlke0l_1nos8r_uv4tnr.atm_7l_1kw7nm4_pfnrn2.atm_rd_8stvzk_pfnrn2.c1qih7tm.atm_1s_glywfm.atm_26_1j28jx2.atm_3f_idpfg4.atm_9j_tlke0l.atm_gi_idpfg4.atm_l8_idpfg4.atm_vb_1wugsn5.atm_7l_jt7fhx.atm_rd_8stvzk.atm_5j_1896hn4.atm_cs_10d11i2.atm_r3_1kw7nm4.atm_mk_h2mmj6.atm_kd_glywfm.atm_9j_13gfvf7_1o5j5ji.atm_7l_jt7fhx_v5whe7.atm_rd_8stvzk_v5whe7.atm_7l_177r58q_1nos8r_uv4tnr.atm_rd_8stvzk_1nos8r_uv4tnr.atm_7l_9vytuy_4fughm_uv4tnr.atm_rd_8stvzk_4fughm_uv4tnr.atm_rd_8stvzk_xggcrc_uv4tnr.atm_7l_1he744i_csw3t1.atm_rd_8stvzk_csw3t1.atm_3f_glywfm_jo46a5.atm_l8_idpfg4_jo46a5.atm_gi_idpfg4_jo46a5.atm_3f_glywfm_1icshfk.atm_kd_glywfm_19774hq.atm_7l_jt7fhx_1w3cfyq.atm_rd_8stvzk_1w3cfyq.atm_uc_aaiy6o_1w3cfyq.atm_70_1p56tq7_1w3cfyq.atm_uc_glywfm_1w3cfyq_1rrf6b5.atm_7l_jt7fhx_pfnrn2_1oszvuo.atm_rd_8stvzk_pfnrn2_1oszvuo.atm_uc_aaiy6o_pfnrn2_1oszvuo.atm_70_1p56tq7_pfnrn2_1oszvuo.atm_uc_glywfm_pfnrn2_1o31aam.atm_7l_9vytuy_1o5j5ji.atm_rd_8stvzk_1o5j5ji.atm_rd_8stvzk_1mj13j2.dir.dir-ltr').innerText();
+        let check_in = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(3).textContent();
+        let check_out = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(4).textContent();
+        let listing = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(6).textContent();
+        let price = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(8).textContent();
+        let code = await lines.locator('.cw5trde.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_cs_6adqpa.atm_7l_jt7fhx.atm_40_4u5rid.atm_l8_8tjzot.atm_j3_kzqwjq.atm_lk_idpfg4_13mkcot.armbts6.atm_r3_1e5hqsa.dir.dir-ltr').nth(7).textContent();
+        await page.waitForTimeout(5000);
+        await lines.locator('.l1ovpqvx.atm_1he2i46_1k8pnbi_10saat9.atm_yxpdqi_1pv6nv4_10saat9.atm_1a0hdzc_w1h1e8_10saat9.atm_2bu6ew_929bqk_10saat9.atm_12oyo1u_73u7pn_10saat9.atm_fiaz40_1etamxe_10saat9.b1p20n7u.atm_9j_tlke0l.atm_9s_1o8liyq.atm_gi_idpfg4.atm_mk_h2mmj6.atm_r3_1h6ojuz.atm_rd_glywfm.atm_3f_uuagnh.atm_70_5j5alw.atm_vy_1wugsn5.atm_tl_1gw4zv3.atm_9j_13gfvf7_1o5j5ji.c1n3e6jn.atm_bx_48h72j.atm_cs_10d11i2.atm_5j_t09oo2.atm_6h_t94yts.atm_66_nqa18y.atm_kd_glywfm.atm_uc_1lizyuv.atm_r2_1j28jx2.atm_c8_km0zk7.atm_g3_18khvle.atm_fr_1m9t47k.atm_jb_1yg2gu8.atm_4b_1qnzqti.atm_26_1qwqy05.atm_7l_jt7fhx.atm_l8_16nilfb.atm_uc_glywfm__1rrf6b5.atm_kd_glywfm_1w3cfyq.atm_uc_aaiy6o_1w3cfyq.atm_3f_glywfm_e4a3ld.atm_l8_idpfg4_e4a3ld.atm_gi_idpfg4_e4a3ld.atm_3f_glywfm_1r4qscq.atm_kd_glywfm_6y7yyg.atm_uc_glywfm_1w3cfyq_1rrf6b5.atm_kd_glywfm_pfnrn2_1oszvuo.atm_uc_aaiy6o_pfnrn2_1oszvuo.atm_3f_glywfm_1icshfk_1oszvuo.atm_l8_idpfg4_1icshfk_1oszvuo.atm_gi_idpfg4_1icshfk_1oszvuo.atm_3f_glywfm_b5gff8_1oszvuo.atm_kd_glywfm_2by9w9_1oszvuo.atm_uc_glywfm_pfnrn2_1o31aam.atm_tr_18md41p_csw3t1.atm_k4_kb7nvz_1o5j5ji.atm_4b_1qnzqti_1w3cfyq.atm_7l_jt7fhx_1w3cfyq.atm_70_1e7pbig_1w3cfyq.atm_4b_1qnzqti_pfnrn2_1oszvuo.atm_7l_jt7fhx_pfnrn2_1oszvuo.atm_70_1e7pbig_pfnrn2_1oszvuo.atm_4b_lb1gtz_1nos8r_uv4tnr.atm_26_zbnr2t_1nos8r_uv4tnr.atm_7l_jt7fhx_1nos8r_uv4tnr.atm_4b_1k0ymf0_4fughm_uv4tnr.atm_26_1qwqy05_4fughm_uv4tnr.atm_7l_9vytuy_4fughm_uv4tnr.atm_4b_lb1gtz_csw3t1.atm_26_zbnr2t_csw3t1.atm_7l_jt7fhx_csw3t1.atm_4b_1k0ymf0_1o5j5ji.atm_26_1qwqy05_1o5j5ji.atm_7l_9vytuy_1o5j5ji.dir.dir-ltr').click();
+        await page.waitForTimeout(5000);
+        final_listing = await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/div[2]').textContent();
+        await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[1]/button').click();
+        const uid = findUID(final_listing,data);
+        const result = separateCurrencySymbol(price);
           if(uid){
           sets.push({
               'reservation_code': code,
@@ -95,7 +93,8 @@ async function listing_main(data) {
             console.log('next');
             // continue; // Only use this if you're inside a loop
           } else {
-            console.log('Button is disabled or not visible');
+            // console.log('Button is disabled or not visible');
+            console.log("Done");
             next = false; // If you're in a loop, this breaks it
           }
 
