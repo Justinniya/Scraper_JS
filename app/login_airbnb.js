@@ -47,7 +47,7 @@ async function loginToAirbnb(email, password) {
         console.log(await page.url());
         await page.waitForTimeout(10000);
         await page.screenshot({ path : 'result.png', fullPage: true });
-        await page.waitForTimeout(10000);
+        await page.waitForTimeout(100000);
         if (await page.url() === 'https://www.airbnb.com/') {
             await page.screenshot({ path : 'correct.png', fullPage: true });
             const cookies = await context.cookies();
