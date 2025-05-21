@@ -148,6 +148,22 @@ app.get('/scraping/airbnb/completed_listing', (req, res) => {
 });
 
 
+app.post('/scraping/airbnb/logout',async (req, res) => {
+    let { auth_id } = req.body;
+
+    try{
+        fs.unlinkSync(`${auth_id}.json`);
+
+        res.status(200).json({ logout: 'logout success' });
+        
+    }
+    catch(err){
+        res.status(401).json({ error: 'Login failed' });
+    }
+    
+});
+
+
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
