@@ -2,18 +2,11 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 
 async function loginToAirbnb(email, password) {
-    const userAgentStrings = [
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.2227.0 Safari/537.36',
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.2228.0 Safari/537.36',
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.3497.92 Safari/537.36',
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
-];
-
-const randomUA = userAgentStrings[Math.floor(Math.random() * userAgentStrings.length)];
     try{
-        const browser = await chromium.launch({ headless: true, args: ['--start-maximized'] });
-        const context = await browser.newContext({userAgent: randomUA});
+        const browser = await chromium.launch({ headless: false ,args: ['--window-size=1920,1080','--no-sandbox'] });
+        const context = await browser.newContext({userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',viewport: { width: 1420, height: 975 }});
         const page = await context.newPage();
+        await page.waitForTimeout(5000);
         await page.goto('https://www.airbnb.com/login');
         await page.waitForTimeout(5000);
     // loginToAirbnb("justindelavega00@gmail.com", "Emjaycee83849724")
