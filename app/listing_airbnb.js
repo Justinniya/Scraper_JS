@@ -42,12 +42,13 @@ async function listing_main(data) {
     await apply.click({ force: true});
     
     await page.waitForTimeout(2000);
-    await page.screenshot({ path: 'screenshot.png', fullPage: true });
+    
     let next = true
     let sets = [];
     let number = 1
     while(next){
       console.log(number);
+      await page.screenshot({ path: 'screenshot.png', fullPage: true });
       number++;
       await page.waitForTimeout(5000);
       let number_of_lines = await page.locator('[data-testid="host-reservations-table-row"]').count();
