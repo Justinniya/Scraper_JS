@@ -188,4 +188,4 @@ function generateUUID() {
 // })();
 
 
-loginToAirbnb("Google",'justindelavega00@gmail.com','Emjaycee83849724');
+loginToAirbnb("Google",'malta.ger.bkk@gmail.com','xurvyF-0zabqi-viwpiw');
