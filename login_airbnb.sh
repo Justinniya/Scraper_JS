@@ -8,5 +8,5 @@ autossh -M 0 -NTC \
   -o ExitOnForwardFailure=yes \
   -o StrictHostKeyChecking=no \
   -o UserKnownHostsFile=/dev/null \
-  -R 4001:127.0.0.1:4000 \
+  -R 3001:127.0.0.1:3000 \
   root@dev.d3.net
