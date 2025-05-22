@@ -32,16 +32,16 @@ async function loginToAirbnb(platform,email, password) {
             console.log(email,password);
         
         if(platform == "Google"){
-            google_login(page,email, password);
+            google_login(page,context,email, password);
         }
         else if(platform == "Email"){
-            email_login(page,email, password)
+            email_login(page,context,email, password)
         }
         
 }
 
 
-async function google_login(page,email, password){
+async function google_login(page,context,email, password){
     // await page.waitForTimeout(2000);
     // let google_button = await page.locator('button').filter({ hasText: "Continue with Google"});
     // await page.waitForTimeout(2000);
@@ -75,7 +75,7 @@ async function google_login(page,email, password){
     console.log('Logged in!');
 }
 
-async function email_login(page,email, password){
+async function email_login(page,context,email, password){
     
         
         await page.waitForTimeout(2000);
