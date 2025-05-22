@@ -42,33 +42,35 @@ async function loginToAirbnb(platform,email, password) {
 
 
 async function google_login(page,email, password){
-    await page.waitForTimeout(2000);
+    // await page.waitForTimeout(2000);
     // let google_button = await page.locator('button').filter({ hasText: "Continue with Google"});
     // await page.waitForTimeout(2000);
     // await google_button.click();
-    await page.goto('https://accounts.google.com/v3/signin/identifier?opparams=%253F&dsh=S-1609351912%3A1747888816289396&access_type=offline&client_id=622686756548-j87bjniqthcq1e4hbf1msh3fikqn892p.apps.googleusercontent.com&o2v=1&redirect_uri=https%3A%2F%2Fwww.airbnb.com%2Foauth_callback&response_type=code&scope=profile+email&service=lso&state=JXBFHCHBFIGGGCJRWGRUUWUQIOCRXW&flowName=GeneralOAuthFlow&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAPBhj2098laxP5CvRPTs5oth7s7eJavfQee4I9rtLp7S4ETe0hKtm8F_W_lEUajrByld9MatZKHMWT9nQcsolm12mv_v64pfEQk_dSlo1dF2-FCypFrAOJyC0mN747tG_GAYI_Hvo63300aqwIdwHIg5RH0dHr5g-5jbjCaGhCc3Ak4zujNWbzBnCkQC0y94ZFJLsRrB7cf199e_WEixex9TiOyF9-Y5D8Mf19LYY1_TDV68SkLvzWUP44GL8a3w4rm2tX7vyyKjNbLbmg5mGVwmWGoMtAYs0I6_9QF8vCwaUw3PoYWoSzETZF-6zToQWb5hMb847kr8lLdLFwKxHYypMHV5hudBDdOsxrER8H-6yU2LRRNllasDXi98fwZ-lFDwSoFU8MMUnPiuj-yTNchDiU66r4YInNnsARxU41B-hnCcqFYLHWUH6xVcZSGVljyP21ZPVVR7o4aFZP3wSyMVHSgug%26flowName%3DGeneralOAuthFlow%26as%3DS-1609351912%253A1747888816289396%26client_id%3D622686756548-j87bjniqthcq1e4hbf1msh3fikqn892p.apps.googleusercontent.com%23&app_domain=https%3A%2F%2Fwww.airbnb.com&rart=ANgoxcdgjeXrg4p9s_xmVHtCTEh6Fm2fsmpxvth_5gMrJwvIPpNOeJ0nXoJUaDc7SsBZVeLtvaTxnjMMACyRrS1MuSzZkssv1Sc544yXPrCWDk4a14V6EAw');
+    const [popup] = await Promise.all([
+    context.waitForEvent('page'),
+    page.locator('button', { hasText: 'Continue with Google' }).click()
+  ]);
 
-    // Interact with the Google login page
-    await page.waitForLoadState();
-    await page.waitForTimeout(2000);
+  await popup.waitForLoadState();
+    await popup.waitForTimeout(2000);
     for(const typing of email){
-            await page.keyboard.press(typing);
-            await page.waitForTimeout(1000);
+            await popup.keyboard.press(typing);
+            await popup.waitForTimeout(1000);
         }
-    await page.screenshot({ path: "pop1.jpg"});
-        await page.keyboard.press('Enter');
-    await page.waitForTimeout(5000);
-    await page.screenshot({ path: "pop.jpg"});
+    await popup.screenshot({ path: "pop1.jpg"});
+        await popup.keyboard.press('Enter');
+    await popup.waitForTimeout(5000);
+    await popup.screenshot({ path: "pop.jpg"});
     for(const typing of password){
-            await page.keyboard.press(typing);
-            await page.waitForTimeout(1000);
+            await popup.keyboard.press(typing);
+            await popup.waitForTimeout(1000);
         }
-    await page.screenshot({ path: "pop2.jpg"});
-    await page.keyboard.press('Enter');
+    await popup.screenshot({ path: "pop2.jpg"});
+    await popup.keyboard.press('Enter');
     
 
     // Wait for redirect to your app
-    await page.waitForURL('**/dashboard');
+    await popup.waitForURL('**/dashboard');
 
     console.log('Logged in!');
 }
