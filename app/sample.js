@@ -1,6 +1,16 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 
+
+function generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+
 async function loginToAirbnb(platform,email, password) {
         const userDataDir = '/home/berting/.config/google-chrome'; // Real Chrome user data path
         const profileDir = 'Profile 8'; // Your chosen Chrome profile (check spelling/case)
@@ -70,9 +80,10 @@ async function google_login(page,context,email, password){
     
 
     // Wait for redirect to your app
-    await popup.waitForURL('**/dashboard');
+    // await popup.waitForURL('**/dashboard');
 
     console.log('Logged in!');
+    
 }
 
 async function email_login(page,context,email, password){
@@ -118,13 +129,7 @@ async function email_login(page,context,email, password){
             return false;
         }
 }
-function generateUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    const r = Math.random() * 16 | 0;
-    const v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
+
 
 
 // module.exports = { loginToAirbnb };
