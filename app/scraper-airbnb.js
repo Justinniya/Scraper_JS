@@ -17,29 +17,29 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/scraping/airbnb/login',async (req, res) => {
-    let { email, password } = req.body;
+// app.post('/scraping/airbnb/login',async (req, res) => {
+//     let { email, password } = req.body;
 
-    if (!email || !password) {
-        return res.status(400).json({ error: 'Email and password are required' });
-    }
-    console.log(email, password);
-    try{
-        fs.unlinkSync('airbnb.json');
-    }
-    catch(err){
-        console.log('No file to delete');
-    }
-    let logging_in = await loginToAirbnb(email, password);
-    console.log(logging_in);
-    if (logging_in) {
+//     if (!email || !password) {
+//         return res.status(400).json({ error: 'Email and password are required' });
+//     }
+//     console.log(email, password);
+//     try{
+//         fs.unlinkSync('airbnb.json');
+//     }
+//     catch(err){
+//         console.log('No file to delete');
+//     }
+//     let logging_in = await loginToAirbnb(email, password);
+//     console.log(logging_in);
+//     if (logging_in) {
 
-        res.status(200).json({ auth_id: logging_in });
-    }
-    else {
-        res.status(401).json({ error: 'Login failed' });
-    }
-});
+//         res.status(200).json({ auth_id: logging_in });
+//     }
+//     else {
+//         res.status(401).json({ error: 'Login failed' });
+//     }
+// });
 // loginToAirbnb("justindelavega00@gmail.com", "Emjaycee83849724")
 
 // curl -X POST http://localhost:3000/scraping/airbnb/login \
