@@ -17,7 +17,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/scraping/airbnb/login',async (req, res) => {
+app.post('/airbnb/login',async (req, res) => {
     let { platform,email, password } = req.body;
 
     if (!email || !password) {
@@ -36,7 +36,7 @@ app.post('/scraping/airbnb/login',async (req, res) => {
 });
 
 
-app.get('/scraping/airbnb/home',async (req, res) => {
+app.get('/airbnb/home',async (req, res) => {
     
         return "its working";
 });
