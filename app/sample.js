@@ -6,7 +6,7 @@ async function loginToAirbnb(platform,email, password) {
         const profileDir = 'Profile 8'; // Your chosen Chrome profile (check spelling/case)
 
         const context = await chromium.launchPersistentContext(userDataDir, {
-            headless: true,
+            headless: false,
             args: [
             `--profile-directory=${profileDir}`,
             '--disable-blink-features=AutomationControlled',
