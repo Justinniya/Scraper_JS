@@ -1,5 +1,4 @@
 #!/bin/bash
-node scraper-airbnb.js
 
 #Login airbnb
 echo "[+] Starting Airbnb Login SSH tunnel with autossh..."
