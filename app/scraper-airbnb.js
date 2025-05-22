@@ -163,6 +163,7 @@ app.post('/scraping/airbnb/logout',async (req, res) => {
     
 });
 
+// login using google in airbnb with puppeteer to be continued
 
 const port = 3000;
 app.listen(port, () => {

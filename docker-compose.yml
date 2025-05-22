@@ -1,6 +1,7 @@
 version: '3'
 services:
   scraper-api:
+    container_name: Scraper-Airbnb
     build:
       context: .  # The root directory (your-project-directory)
       dockerfile: Dockerfile  # Dockerfile is outside the 'app' directory
