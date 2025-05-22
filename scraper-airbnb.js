@@ -36,6 +36,14 @@ app.post('/scraping/airbnb/login',async (req, res) => {
 });
 
 
+app.get('/scraping/airbnb/home',async (req, res) => {
+    
+        return "its working";
+});
+
+
+
+
 const port = 4000;
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
