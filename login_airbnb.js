@@ -87,26 +87,31 @@ async function google_login(page,context,email, password){
     // await popup.screenshot({ path: "pop2.jpg"});
     await popup.keyboard.press('Enter');
     await popup.waitForTimeout(10000);
-    // await popup.goto('https://www.airbnb.com/');
-        await popup.waitForTimeout(20000);
-        if (await popup.url() == 'https://www.airbnb.com/') {
-           let uuid = generateUUID();
-            await popup.screenshot({ path : 'correct.png', fullPage: true });
-            const cookies = await context.cookies();
-            
-            fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
-            popup.waitForTimeout(10000);
-            move_to_docker(uuid);
-            updateAuthInDocker(email, uuid);
-            popup.waitForTimeout(10000);
-            await context.close();
-            return uuid;
-        }
-        else {
-            await popup.screenshot({ path : 'error.png', fullPage: true });
-            await context.close();
-            return false;
-        }
+    const pages = context.pages();
+    const mainPage = pages[0]; 
+    await mainPage.bringToFront();
+
+    // Optional: verify it's Airbnb
+    await mainPage.waitForLoadState();
+    await mainPage.waitForTimeout(20000);
+
+    if (await mainPage.url() === 'https://www.airbnb.com/') {
+        const uuid = generateUUID();
+        await mainPage.screenshot({ path : 'correct.png', fullPage: true });
+        const cookies = await context.cookies();
+        
+        fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
+        await move_to_docker(uuid);
+        await updateAuthInDocker(email, uuid);
+
+        await mainPage.waitForTimeout(10000);
+        await context.close();
+        return uuid;
+    } else {
+        await mainPage.screenshot({ path : 'error.png', fullPage: true });
+        await context.close();
+        return false;
+    }
 
     // Wait for redirect to your app
     // await popup.waitForURL('**/dashboard');
