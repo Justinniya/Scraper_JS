@@ -2,6 +2,7 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const { set } = require('date-fns/set');
 const axios = require('axios');
+const path = require('path');
 
 async function listing_main(data) {
   // console.log(data);
@@ -9,12 +10,19 @@ async function listing_main(data) {
     const context = await browser.newContext({userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',viewport: { width: 1920, height: 1080 }});
     const page = await context.newPage();
     await page.waitForTimeout(5000);
-    try{
-    const cookies = JSON.parse(fs.readFileSync('airbnb_listing.json', 'utf-8'));
-    await context.addCookies(cookies);
-    console.log("Running....");
-    }catch(err){
-        console.log('No cookies to add');
+    
+    try {
+        const cookiePath = path.join(__dirname, 'auth', `${data.apiKey}.json`);
+        
+        if (fs.existsSync(cookiePath)) {
+            const cookies = JSON.parse(fs.readFileSync(cookiePath, 'utf-8'));
+            await context.addCookies(cookies);
+            console.log('✅ Cookies added. Running...');
+        } else {
+            return '⚠️ No cookie file found for this API key.';
+        }
+    } catch (err) {
+        return '❌ Failed to load cookies:';
     }
     await page.goto('https://www.airbnb.com');
     await page.waitForTimeout(2000);
