@@ -2,7 +2,7 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const move_to_docker = require('./transfer.js');
 const path = require('path');
-const updateAuthInDocker = require('./updateAuthInDocker');
+const updateAuthInDocker = require('./auth_data');
 
 
 function generateUUID() {
