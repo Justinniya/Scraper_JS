@@ -17,21 +17,29 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/airbnb/login',async (req, res) => {
-    let { platform,email, password } = req.body;
+app.post('/airbnb/login', async (req, res) => {
+    try {
+        let { platform, email, password } = req.body;
 
-    if (!email || !password) {
-        return res.status(400).json({ error: 'Email and password are required' });
-    }
-    console.log(email, password);
-    let logging_in = loginToAirbnb(platform,email, password);
-    console.log("running ",logging_in);
-    if (logging_in) {
+        if (!platform || !email || !password) {
+            return res.status(400).json({ error: 'Platform, email, and password are required' });
+        }
 
-        res.status(200).json({ auth_id: logging_in });
-    }
-    else {
-        res.status(401).json({ error: 'Login failed' });
+        console.log('Login attempt for:', email);
+
+        let logging_in = await loginToAirbnb(platform, email, password);
+
+        console.log("Login status:", logging_in);
+
+        if (logging_in) {
+            return res.status(200).json({ auth_id: logging_in });
+        } else {
+            return res.status(401).json({ error: 'Login failed' });
+        }
+
+    } catch (err) {
+        console.error('❌ Server error during login:', err);
+        return res.status(500).json({ error: 'Internal server error, Please contact your developer' });
     }
 });
 
