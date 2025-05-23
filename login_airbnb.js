@@ -1,5 +1,6 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
+const move_to_docker = require('./transfer.js');
 
 
 function generateUUID() {
@@ -12,13 +13,19 @@ function generateUUID() {
 
 
 async function loginToAirbnb(platform,email, password) {
-        const userDataDir = '/home/berting/.config/google-chrome'; // Real Chrome user data path
-        const profileDir = 'Profile 8'; // Your chosen Chrome profile (check spelling/case)
+        const userDataDir = '/home/berting/.config/google-chrome';
+        const profileName = 'Profile 8'; // Profile you want to delete
+        const profilePath = path.join(userDataDir, profileName);
+
+        // Delete profile folder if it exists
+        if (fs.existsSync(profilePath)) {
+            fs.rmSync(profilePath, { recursive: true, force: true });
+        }
 
         const context = await chromium.launchPersistentContext(userDataDir, {
             headless: false,
             args: [
-            `--profile-directory=${profileDir}`,
+            `--profile-directory=${profileName}`,
             '--disable-blink-features=AutomationControlled',
             '--window-size=1920,1080'
             ],
@@ -77,12 +84,28 @@ async function google_login(page,context,email, password){
         }
     // await popup.screenshot({ path: "pop2.jpg"});
     await popup.keyboard.press('Enter');
-    
+    await page.waitForTimeout(10000);
+    await page.goto('https://www.airbnb.com/');
+        await page.waitForTimeout(20000);
+        if (await page.url() == 'https://www.airbnb.com/') {
+           let uuid = generateUUID();
+            await page.screenshot({ path : 'correct.png', fullPage: true });
+            const cookies = await context.cookies();
+            
+            fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
+            page.waitForTimeout(10000);
+            move_to_docker(uuid);
+            await browser.close();
+            return uuid;
+        }
+        else {
+            await page.screenshot({ path : 'error.png', fullPage: true });
+            await browser.close();
+            return false;
+        }
 
     // Wait for redirect to your app
     // await popup.waitForURL('**/dashboard');
-
-    console.log('Logged in!');
     
 }
 
