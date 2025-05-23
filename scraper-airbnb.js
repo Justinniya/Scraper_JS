@@ -27,13 +27,12 @@ app.post('/airbnb/login', async (req, res) => {
 
         console.log('Login attempt for:', email);
 
-        let logging_in = await loginToAirbnb(platform, email, password);
-
-        console.log("Login status:", logging_in);
-
-        if (logging_in) {
+        try {
+            let logging_in = await loginToAirbnb(platform, email, password);
+            console.log("Login status:", logging_in);
             return res.status(200).json({ auth_id: logging_in });
-        } else {
+        } catch (err) {
+            console.error("❌ Airbnb login failed:", err.message);
             return res.status(401).json({ error: 'Login failed' });
         }
 

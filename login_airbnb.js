@@ -114,7 +114,7 @@ async function google_login(page,context,email, password){
     } else {
         await mainPage.screenshot({ path : 'error.png', fullPage: true });
         await context.close();
-        return false;
+        throw new Error('Login failed: Final URL did not match expected Airbnb homepage');
     }
 
     // Wait for redirect to your app
