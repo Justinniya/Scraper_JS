@@ -63,7 +63,7 @@ async function loginToAirbnb(platform,email, password) {
 async function google_login(page,context,email, password){
     // await page.waitForTimeout(2000);
     // let google_button = await page.locator('button').filter({ hasText: "Continue with Google"});
-    // await page.waitForTimeout(2000);
+    await page.waitForTimeout(2000);
     // await google_button.click();
     const [popup] = await Promise.all([
     context.waitForEvent('page'),
