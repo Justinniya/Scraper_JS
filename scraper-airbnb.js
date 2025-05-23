@@ -24,7 +24,7 @@ app.post('/airbnb/login',async (req, res) => {
         return res.status(400).json({ error: 'Email and password are required' });
     }
     console.log(email, password);
-    let logging_in = await loginToAirbnb(platform,email, password);
+    let logging_in = loginToAirbnb(platform,email, password);
     console.log("running ",logging_in);
     if (logging_in) {
 
