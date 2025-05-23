@@ -2,6 +2,7 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const move_to_docker = require('./transfer.js');
 const path = require('path');
+const updateAuthInDocker = require('./updateAuthInDocker');
 
 
 function generateUUID() {
@@ -85,23 +86,24 @@ async function google_login(page,context,email, password){
         }
     // await popup.screenshot({ path: "pop2.jpg"});
     await popup.keyboard.press('Enter');
-    await page.waitForTimeout(10000);
-    await page.goto('https://www.airbnb.com/');
-        await page.waitForTimeout(20000);
-        if (await page.url() == 'https://www.airbnb.com/') {
+    await popup.waitForTimeout(10000);
+    // await popup.goto('https://www.airbnb.com/');
+        await popup.waitForTimeout(20000);
+        if (await popup.url() == 'https://www.airbnb.com/') {
            let uuid = generateUUID();
-            await page.screenshot({ path : 'correct.png', fullPage: true });
+            await popup.screenshot({ path : 'correct.png', fullPage: true });
             const cookies = await context.cookies();
             
             fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
-            page.waitForTimeout(10000);
+            popup.waitForTimeout(10000);
             move_to_docker(uuid);
-            page.waitForTimeout(10000);
+            updateAuthInDocker(email, uuid);
+            popup.waitForTimeout(10000);
             await context.close();
             return uuid;
         }
         else {
-            await page.screenshot({ path : 'error.png', fullPage: true });
+            await popup.screenshot({ path : 'error.png', fullPage: true });
             await context.close();
             return false;
         }
@@ -146,6 +148,7 @@ async function email_login(page,context,email, password){
             fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
             page.waitForTimeout(10000);
             move_to_docker(uuid);
+            updateAuthInDocker(email, uuid);
             page.waitForTimeout(10000);
             await context.close();
             return uuid;
