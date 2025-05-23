@@ -86,7 +86,11 @@ async function google_login(page,context,email, password){
         }
     // await popup.screenshot({ path: "pop2.jpg"});
     await popup.keyboard.press('Enter');
+    try{
     await popup.waitForTimeout(20000);
+    }catch(e){
+        console.log("pop up close");
+    }
     const pages = context.pages();
     const mainPage = pages[0]; 
     await mainPage.bringToFront();
