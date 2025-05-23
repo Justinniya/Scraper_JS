@@ -2,6 +2,7 @@ const { exec } = require('child_process');
 
 
 async function move_to_docker(name_of_file){
+    console.log("transferring json to docker");
     const localFile = `./${name_of_file}.json`;
     const containerName = 'Scraper-Airbnb';
     const containerPath = `/app/auth/${name_of_file}.json`;

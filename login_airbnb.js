@@ -96,12 +96,13 @@ async function google_login(page,context,email, password){
             fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
             page.waitForTimeout(10000);
             move_to_docker(uuid);
-            await browser.close();
+            page.waitForTimeout(10000);
+            await context.close();
             return uuid;
         }
         else {
             await page.screenshot({ path : 'error.png', fullPage: true });
-            await browser.close();
+            await context.close();
             return false;
         }
 
@@ -143,13 +144,15 @@ async function email_login(page,context,email, password){
             await page.screenshot({ path : 'correct.png', fullPage: true });
             const cookies = await context.cookies();
             fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
-
-            await browser.close();
+            page.waitForTimeout(10000);
+            move_to_docker(uuid);
+            page.waitForTimeout(10000);
+            await context.close();
             return uuid;
         }
         else {
             await page.screenshot({ path : 'error.png', fullPage: true });
-            await browser.close();
+            await context.close();
             return false;
         }
 }
