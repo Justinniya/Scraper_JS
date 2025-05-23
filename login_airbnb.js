@@ -51,10 +51,11 @@ async function loginToAirbnb(platform,email, password) {
             console.log(email,password);
         
         if(platform == "Google"){
-            google_login(page,context,email, password);
+            return google_login(page,context,email, password);
+             
         }
         else if(platform == "Email"){
-            email_login(page,context,email, password)
+            return email_login(page,context,email, password)
         }
         
 }
