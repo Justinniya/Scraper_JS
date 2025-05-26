@@ -119,7 +119,7 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
         console.log('Running listing_main()...');
         const result = await listing_main(req.body);
         // res.status(200).json({ message: result });
-        console.log({ 'message': result});
+        console.log(result);
     } catch (err) {
         console.error('Error:', err);
         res.status(500).json({ error: 'Internal Server Error' });

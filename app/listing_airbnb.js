@@ -121,6 +121,7 @@ async function listing_main(data) {
     fs.writeFileSync('airbnb_listing.json', JSON.stringify(cookies, null, 2));
     await page.waitForTimeout(5000);
     await page.close();
+    console.log(sets);
     let finaL_response = await response(sets);
     // console.log(sets);
     return finaL_response;
