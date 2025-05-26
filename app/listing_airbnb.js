@@ -150,8 +150,10 @@ async function selectDateFromCalendar(page, day, month, year, isStartDate = true
   }catch{
     if(isFirstBeforeSecond(final_date,year_and_date)){
       await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div[2]/button').click();
+      await page.screenshot({ path: 'before.png', fullPage: true });
     }else{
       await page.locator('xpath=/html/body/div[9]/div/div/section/div/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div[1]/button').click();
+      await page.screenshot({ path: 'after.png', fullPage: true });
     }
     
     }
