@@ -74,16 +74,14 @@ async function google_login(page,context,email, password){
   await popup.waitForLoadState();
     await popup.waitForTimeout(2000);
     for(const typing of email){
-            await popup.keyboard.press(typing);
-            await popup.waitForTimeout(1000);
+            await page.type('xpath=//*[@id="identifierId"]', typing, { delay: 1000 });
         }
     // await popup.screenshot({ path: "pop1.jpg"});
         await popup.keyboard.press('Enter');
     await popup.waitForTimeout(5000);
     // await popup.screenshot({ path: "pop.jpg"});
     for(const typing of password){
-            await popup.keyboard.press(typing);
-            await popup.waitForTimeout(1000);
+            await page.type('input[type="password"]', typing, { delay: 1000 });
         }
     // await popup.screenshot({ path: "pop2.jpg"});
     await popup.keyboard.press('Enter');
