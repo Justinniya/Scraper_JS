@@ -16,7 +16,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+const authPath = path.join(__dirname, 'auth', 'auth.json');
+const authList = JSON.parse(fs.readFileSync(authPath, 'utf-8'));
 // app.post('/scraping/airbnb/login',async (req, res) => {
 //     let { email, password } = req.body;
 
@@ -93,6 +94,7 @@ app.get('/scraping/airbnb/home', async (req, res) => {
 
 
 app.post('/scraping/airbnb/create_listing', async (req, res) => {
+    
     const { data } = req.body;
     console.log(data);
     if (!url || !data ) {
@@ -115,6 +117,21 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
 
 app.post('/scraping/airbnb/completed_listing', async (req, res) => {
     try {
+         const { apiKey } = req.body;
+
+        // 🔒 Validate presence and match
+        if (!apiKey) {
+            return res.status(400).json({ error: 'API key is required in the request body' });
+        }
+
+        const authorized = authList.find(entry => entry.apiKey === apiKey);
+
+        if (!authorized) {
+            return res.status(401).json({ error: 'Invalid API key' });
+        }
+
+        console.log(`✅ Verified API key for user: ${authorized.user}`);
+        console.log('Request body:', req.body);
         res.status(200).json({ "status code": 200 });
         console.log('Running listing_main()...');
         const result = await listing_main(req.body);
