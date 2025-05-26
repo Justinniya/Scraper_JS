@@ -143,6 +143,17 @@ app.get('/scraping/airbnb/completed_listing', (req, res) => {
 //     }
 // });
 
+app.get('/scraping/airbnb/show_all',(req, res) => {
+    const filePath = path.join(__dirname, 'auth', 'auth.json');
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+        return res.status(500).json({ error: 'Failed to read JSON' });
+        }
+        const user = JSON.parse(data);
+        res.json(user);
+    });
+});
+
 app.get('/scraping/airbnb/completed_listing', (req, res) => {
   res.send('GET route is working. Server is up.');
 });
