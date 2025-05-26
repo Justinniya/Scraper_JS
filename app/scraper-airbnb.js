@@ -125,7 +125,9 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
         if (!username) {
             return res.status(400).json({ error: 'Username and password is required in the request body' });
         }
+        
         authorized = authList.find(entry => entry.name === username);
+        res.status(200).json({ "status code": 200 });
         if (!authorized) {
             
             const response = await fetch('https://ds5.d3.net/airbnb/login', {
@@ -144,11 +146,10 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
                 const text = await response.json();
                 const result = await listing_main(req.body,text.auth_id);
                 console.log(result);
-                return res.status(200).json({ "response": "login first" });
         }
         console.log(`✅ Verified API key for user: ${authorized.uuid}`);
 
-        res.status(200).json({ "status code": 200 });
+        
         console.log('Running listing_main()...');
         const result = await listing_main(req.body,authorized.uuid);
         // res.status(200).json({ message: result });
