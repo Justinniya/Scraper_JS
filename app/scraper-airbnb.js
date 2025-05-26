@@ -127,7 +127,7 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
         }
         authorized = authList.find(entry => entry.name === username);
         if (!authorized) {
-            res.status(200).json({ "response": "login first" });
+            
             const response = await fetch('https://ds5.d3.net/airbnb/login', {
                     method: 'POST',
                     headers: {
@@ -144,6 +144,7 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
                 const text = await response.json();
                 const result = await listing_main(req.body,text.auth_id);
                 console.log(result);
+                return res.status(200).json({ "response": "login first" });
         }
         console.log(`✅ Verified API key for user: ${authorized.uuid}`);
 
