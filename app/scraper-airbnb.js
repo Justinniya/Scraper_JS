@@ -119,13 +119,12 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
     try {
          const { apiKey } = req.body;
          console.log(apiKey);
-         console.log(apiKey.apiKey);
+         console.log(authList);
         // 🔒 Validate presence and match
         if (!apiKey) {
             return res.status(400).json({ error: 'API key is required in the request body' });
         }
-        const authorized = authList.find(entry => entry.apiKey === apiKey.apiKey);
-
+        const authorized = authList.find(entry => entry.apiKey === apiKey);
         if (!authorized) {
             return res.status(401).json({ error: 'Invalid API key' });
         }
