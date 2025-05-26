@@ -139,7 +139,7 @@ async function sendCompletedListing() {
 
     const contentType = response.headers.get('content-type');
     const text = await response.text();
-    console.log('Raw response:', text);
+    console.log('Raw response:', text.auth_id);
 }
 
 sendCompletedListing();

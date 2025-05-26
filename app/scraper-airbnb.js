@@ -118,8 +118,8 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
 app.post('/scraping/airbnb/completed_listing', async (req, res) => {
     let authorized
     try {
-         const { username } = req.body;
-         console.log(username);
+         const { username,password } = req.body;
+         console.log(username,password);
          console.log(authList);
         // 🔒 Validate presence and match
         if (!username) {
@@ -127,6 +127,7 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
         }
         authorized = authList.find(entry => entry.name === username);
         if (!authorized) {
+            res.status(200).json({ "response": "login first" });
             const response = await fetch('https://ds5.d3.net/airbnb/login', {
                     method: 'POST',
                     headers: {
@@ -134,15 +135,15 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
                     },
                     body: JSON.stringify({
                         "platform":"Google",
-                        "email" : "justindelavega00@gmail.com",
-                        "password" : "Emjaycee83849724"
+                        "email" : username,
+                        "password" : password
                     })
                 });
 
                 const contentType = response.headers.get('content-type');
-                const text = await response.text();
-                console.log('Raw response:', text);
-
+                const text = await response.json();
+                const result = await listing_main(req.body,text.auth_id);
+                console.log(result);
         }
         console.log(`✅ Verified API key for user: ${authorized.uuid}`);
 
