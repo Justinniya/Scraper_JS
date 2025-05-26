@@ -116,6 +116,7 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
 });
 
 app.post('/scraping/airbnb/completed_listing', async (req, res) => {
+    let authorized
     try {
          const { username } = req.body;
          console.log(username);
@@ -124,7 +125,7 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
         if (!username) {
             return res.status(400).json({ error: 'Username and password is required in the request body' });
         }
-        const authorized = authList.find(entry => entry.name === username);
+        authorized = authList.find(entry => entry.name === username);
         if (!authorized) {
             return res.status(401).json({ error: 'Invalid Account' });
         }
@@ -132,7 +133,7 @@ app.post('/scraping/airbnb/completed_listing', async (req, res) => {
 
         res.status(200).json({ "status code": 200 });
         console.log('Running listing_main()...');
-        const result = await listing_main(req.body);
+        const result = await listing_main(req.body,authorized.uuid);
         // res.status(200).json({ message: result });
         console.log(result);
     } catch (err) {
