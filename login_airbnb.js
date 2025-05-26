@@ -73,8 +73,9 @@ async function google_login(page,context,email, password){
 
   await popup.waitForLoadState();
     await popup.waitForTimeout(2000);
+    let email_path = await popup.locator('xpath=//*[@id="identifierId"]');
     for(const typing of email){
-            await page.type('#identifierId', typing, { delay: 1000 });
+            await page.type(email_path, typing, { delay: 1000 });
         }
     // await popup.screenshot({ path: "pop1.jpg"});
         await popup.keyboard.press('Enter');
