@@ -194,23 +194,28 @@ app.get('/scraping/airbnb/completed_listing', (req, res) => {
 
 
 app.post('/scraping/airbnb/logout',async (req, res) => {
-    let { auth_id } = req.body;
-    console.log(auth_id,req.body)
+    let { email } = req.body;
 
     try{
+        let data = fs.readFileSync('auth/auth.json', 'utf-8');
+        let jsonArray = JSON.parse(data);
+
+        jsonArray = jsonArray.filter(item => item.name !== email);
+
         fs.unlinkSync(`auth/${auth_id}.json`);
+        fs.writeFileSync('auth/auth.json', JSON.stringify(jsonArray, null, 2), 'utf-8');
+
+        console.log('Item removed successfully.');
 
         res.status(200).json({ logout: 'logout success' });
         
     }
     catch(err){
         console.log(err,req.body)
-        res.status(401).json({ error: 'Login failed' });
+        res.status(401).json({ error: 'Account not found or already logout' });
     }
     
 });
-
-// login using google in airbnb with puppeteer to be continued
 
 const port = 3000;
 app.listen(port, () => {
