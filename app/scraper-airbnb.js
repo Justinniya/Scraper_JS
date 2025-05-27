@@ -204,7 +204,8 @@ app.post('/scraping/airbnb/logout',async (req, res) => {
         
     }
     catch(err){
-        res.status(401).json({ error: 'Login failed',"a":err });
+        console.log(err,req.body)
+        res.status(401).json({ error: 'Login failed' });
     }
     
 });
