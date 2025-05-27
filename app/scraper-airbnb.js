@@ -194,13 +194,13 @@ app.get('/scraping/airbnb/completed_listing', (req, res) => {
 
 
 app.post('/scraping/airbnb/logout',async (req, res) => {
-    let { email } = req.body;
+    let { auth_id } = req.body;
 
     try{
         let data = fs.readFileSync('auth/auth.json', 'utf-8');
         let jsonArray = JSON.parse(data);
 
-        jsonArray = jsonArray.filter(item => item.name !== email);
+        jsonArray = jsonArray.filter(item => item.uuid !== auth_id);
 
         fs.unlinkSync(`auth/${auth_id}.json`);
         fs.writeFileSync('auth/auth.json', JSON.stringify(jsonArray, null, 2), 'utf-8');
