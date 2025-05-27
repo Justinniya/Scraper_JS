@@ -198,7 +198,7 @@ app.post('/scraping/airbnb/logout',async (req, res) => {
     console.log(auth_id,req.body)
 
     try{
-        fs.unlinkSync(`${auth_id}.json`);
+        fs.unlinkSync(`auth/${auth_id}.json`);
 
         res.status(200).json({ logout: 'logout success' });
         
