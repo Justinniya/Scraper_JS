@@ -195,6 +195,7 @@ app.get('/scraping/airbnb/completed_listing', (req, res) => {
 
 app.post('/scraping/airbnb/logout',async (req, res) => {
     let { auth_id } = req.body;
+    console.log(auth_id,req.body)
 
     try{
         fs.unlinkSync(`${auth_id}.json`);
