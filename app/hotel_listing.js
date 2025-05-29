@@ -682,6 +682,7 @@ async function a_room_function(page,data){
     let id = await last_function(page,data);
     return id
 }
+
 async function shared_function(page,data){
     await choose_function(page,data);
     await guest_will_function(page,data);

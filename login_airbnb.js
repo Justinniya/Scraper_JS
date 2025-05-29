@@ -149,24 +149,22 @@ async function email_login(page,context,email, password){
         console.log(await page.url());
         await page.waitForTimeout(10000);
         await page.waitForTimeout(10000);
-        await page.goto('https://www.airbnb.com/');
-        await page.waitForTimeout(20000);
-        if (await page.url() == 'https://www.airbnb.com/') {
-           let uuid = generateUUID();
-            await page.screenshot({ path : 'correct.png', fullPage: true });
+        if (await mainPage.url() === 'https://www.airbnb.com/') {
+            const uuid = generateUUID();
+            await mainPage.screenshot({ path : 'correct.png', fullPage: true });
             const cookies = await context.cookies();
+            
             fs.writeFileSync(`${uuid}.json`, JSON.stringify(cookies, null, 2));
-            page.waitForTimeout(10000);
-            move_to_docker(uuid);
-            updateAuthInDocker(email, uuid);
-            page.waitForTimeout(10000);
+            await move_to_docker(uuid);
+            await updateAuthInDocker(email, uuid);
+
+            await mainPage.waitForTimeout(10000);
             await context.close();
             return uuid;
-        }
-        else {
-            await page.screenshot({ path : 'error.png', fullPage: true });
+        } else {
+            await mainPage.screenshot({ path : 'error.png', fullPage: true });
             await context.close();
-            return false;
+            throw new Error('Login failed: Final URL did not match expected Airbnb homepage');
         }
 }
 
