@@ -1,3 +1,7 @@
+const {number_of_guests} = require('./number_of_guests');
+const {number_of_bedroom} = require('./number_of_bedroom');
+const {number_of_beds} = require('./number_of_beds');
+const {bedroom_lock} = require('./bedroom_lock');
 async function room_guest_stay_function(page,data){
     let guest_stay = data['how_many_people_can_stay_here'];
     await number_of_guests(page,guest_stay['number_of_guests']);
