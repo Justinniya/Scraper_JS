@@ -94,7 +94,6 @@ app.get('/scraping/airbnb/home', async (req, res) => {
 
 
 app.post('/scraping/airbnb/create_listing', async (req, res) => {
-    const { auth_id } = req.body;
     const { data } = req.body;
     console.log(data);
     if (!url || !data ) {
@@ -103,10 +102,10 @@ app.post('/scraping/airbnb/create_listing', async (req, res) => {
 
     try {
         if(data['choose_place'] == 'House'){
-            await house_listing(data,auth_id);
+            await house_listing(data,data.auth_id);
         }
         else{
-            await hotel_listing(data,auth_id);
+            await hotel_listing(data,data.auth_id);
         }
         res.status(200).json({ message: 'Post to Facebook successful!' });
     } catch (err) {
