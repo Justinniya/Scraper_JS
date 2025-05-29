@@ -22,6 +22,7 @@ async function hotel_listing(data) {
     await page.waitForTimeout(5000);
     await page.goto('https://www.airbnb.com/become-a-host');
     await page.waitForTimeout(5000);
+    await page.screenshot({path:"createlisting.jpg"})
     let start = await page.getByText('Create a new listing');
     await page.waitForTimeout(5000);
     await start.click();
@@ -37,7 +38,7 @@ async function hotel_listing(data) {
     let next1 = await page.locator('button[aria-label="Next step"]').nth(0);
     await page.waitForTimeout(2000);
     await next1.click({ force: true });
-    await page.screenshot({path:"createlisting.jpg"})
+    
     if(data.place_guest_will == "a_room"){
         id = await a_room_function(page,data);
         console.log("a_room_function done");
