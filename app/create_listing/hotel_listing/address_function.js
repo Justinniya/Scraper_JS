@@ -1,8 +1,8 @@
 async function address_function(page,data){
     let enter_address = await page.locator('input[placeholder="Enter your address"]').nth(0);
     await page.waitForTimeout(2000);
-    await enter_address.click();
-    await page.keyboard.type('zarraga');
+    await enter_address.fill('zarraga');
+    // await page.keyboard.type('zarraga');
     await page.click('li#autocomplete-result-0');
     await page.waitForTimeout(2000);
     let address = data['address'];
