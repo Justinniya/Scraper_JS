@@ -2,8 +2,12 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const {a_room_function} = require('./a_room_function');
 const {shared_function} = require('./shared_function');
+const path = require('path');
 
-async function hotel_listing(data) {
+// Go up two levels (from listing → create → root) then into auth
+
+
+async function hotel_listing(data,auth_id) {
     
     let id;
     const browser = await chromium.launch({ headless: true  ,args: ['--start-maximized'] });
@@ -11,7 +15,8 @@ async function hotel_listing(data) {
     const page = await context.newPage();
     await page.waitForTimeout(5000);
     try{
-    const cookies = JSON.parse(fs.readFileSync('airbnb.json', 'utf-8'));
+    const filePath = path.join(__dirname, '..', '..', 'auth',`${auth_id}.json`);
+    const cookies = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     await context.addCookies(cookies);
     console.log("done");
     }catch(err){
@@ -22,7 +27,7 @@ async function hotel_listing(data) {
     await page.waitForTimeout(5000);
     await page.goto('https://www.airbnb.com/become-a-host');
     await page.waitForTimeout(5000);
-    await page.screenshot({path:"createlisting.jpg"})
+    // await page.screenshot({path:"createlisting.jpg"})
     let start = await page.getByText('Create a new listing');
     await page.waitForTimeout(5000);
     await start.click();
