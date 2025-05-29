@@ -1,4 +1,10 @@
 const path = require('path');
+const {tell_guest_what_your_place_offer_function} = require('./tell_guest_what_your_place_offer_function');
+const {downloadImage} = require('./downloadImage');
+const {describe_hotel} = require('./describe_hotel');
+const {choose_who_to_welcome_for_your_first_reservation} = require('./choose_who_to_welcome_for_your_first_reservation');
+const {add_discount} = require('./add_discount');
+const {share_safety_details} = require('./add_disshare_safety_detailscount');
 
 async function last_function(page,data){
     let id;
