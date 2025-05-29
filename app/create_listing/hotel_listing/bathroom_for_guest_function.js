@@ -1,4 +1,4 @@
-const {private_and_attached} = require('./chooseprivate_and_attached_function');
+const {private_and_attached} = require('./private_and_attached');
 const {dedicated} = require('./dedicated');
 const {shared} = require('./shared');
 
