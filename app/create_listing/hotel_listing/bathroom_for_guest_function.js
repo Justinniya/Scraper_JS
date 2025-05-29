@@ -1,3 +1,8 @@
+const {private_and_attached} = require('./chooseprivate_and_attached_function');
+const {dedicated} = require('./dedicated');
+const {shared} = require('./shared');
+
+
 async function bathroom_for_guest_function(page,data){
     let bathrooms_are_available_to_guests = data['bathrooms_are_available_to_guests']
     await private_and_attached(page,bathrooms_are_available_to_guests['private_and_attached']);
