@@ -4,6 +4,7 @@ const {address_function} = require('./address_function');
 const {room_guest_stay_function} = require('./room_guest_stay_function');
 const {who_else_function} = require('./who_else_function');
 const {step_2} = require('./step_2');
+const {bathroom_for_guest_function} = require('./bathroom_for_guest_function');
 const {last_function} = require('./last_function');
 
 
